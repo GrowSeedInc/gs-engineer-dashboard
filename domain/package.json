@@ -3,10 +3,11 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "generate:aspida": "openapi2aspida --input openapi.yaml --output generated/aspida",
-    "generate:zod": "openapi-zod-client openapi.yaml -o generated/zod/schemas.ts",
+    "bundle": "npx @redocly/cli bundle openapi.yaml -o generated/openapi.bundled.yaml",
+    "generate:aspida": "openapi2aspida --input generated/openapi.bundled.yaml",
+    "generate:zod": "openapi-zod-client generated/openapi.bundled.yaml -o generated/zod/schemas.ts",
     "generate:msw": "msw init generated/msw",
-    "generate": "npm run generate:aspida && npm run generate:zod"
+    "generate": "npm run bundle && npm run generate:aspida && npm run generate:zod && npm run generate:msw"
   },
   "devDependencies": {
     "openapi2aspida": "latest",

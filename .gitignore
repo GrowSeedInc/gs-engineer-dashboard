@@ -28,6 +28,7 @@ frontend/build/
 
 # Domain: generated code (openapi2aspida / openapi-zod-client / MSW)
 domain/generated/
+domain/api/
 
 # Test coverage
 coverage/
