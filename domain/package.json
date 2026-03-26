@@ -1,0 +1,16 @@
+{
+  "name": "gs-engineer-dashboard-domain",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "generate:aspida": "openapi2aspida --input openapi.yaml --output generated/aspida",
+    "generate:zod": "openapi-zod-client openapi.yaml -o generated/zod/schemas.ts",
+    "generate:msw": "msw init generated/msw",
+    "generate": "npm run generate:aspida && npm run generate:zod"
+  },
+  "devDependencies": {
+    "openapi2aspida": "latest",
+    "openapi-zod-client": "latest",
+    "msw": "latest"
+  }
+}

@@ -1,0 +1,34 @@
+/api/v1/contracts:
+  get:
+    tags:
+      - Contract
+    summary: 受注契約情報取得
+    description: ログインユーザーの受注契約一覧と月別受注状況を返す
+    parameters:
+      - name: from
+        in: query
+        required: false
+        description: 表示開始年月（YYYY-MM形式）
+        schema:
+          type: string
+          example: "2025-09"
+      - name: to
+        in: query
+        required: false
+        description: 表示終了年月（YYYY-MM形式）
+        schema:
+          type: string
+          example: "2026-08"
+    responses:
+      "200":
+        description: 取得成功
+        content:
+          application/json:
+            schema:
+              $ref: '../schemas/contract.yaml#/ContractList'
+      "401":
+        description: 未認証
+        content:
+          application/json:
+            schema:
+              $ref: '../schemas/error.yaml#/Error'

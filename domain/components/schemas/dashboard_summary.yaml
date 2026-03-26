@@ -1,0 +1,20 @@
+DashboardSummary:
+  type: object
+  properties:
+    monthly_salary:
+      type: integer
+      description: 月額給与（円）
+      example: 450000
+    monthly_unit_price:
+      type: integer
+      description: 月額単価・税抜（円）
+      example: 750000
+    return_rate:
+      type: number
+      format: float
+      description: 還元率（%）。計算式：月額給与 ÷ 月額単価（税抜）× 100
+      example: 60.0
+  required:
+    - monthly_salary
+    - monthly_unit_price
+    - return_rate

@@ -1,0 +1,19 @@
+/api/v1/dashboard:
+  get:
+    tags:
+      - Dashboard
+    summary: ダッシュボードサマリー取得
+    description: ログインユーザーの月額給与・月額単価・還元率を返す
+    responses:
+      "200":
+        description: 取得成功
+        content:
+          application/json:
+            schema:
+              $ref: '../schemas/dashboard_summary.yaml#/DashboardSummary'
+      "401":
+        description: 未認証
+        content:
+          application/json:
+            schema:
+              $ref: '../schemas/error.yaml#/Error'

@@ -1,0 +1,17 @@
+User:
+  type: object
+  properties:
+    id:
+      type: integer
+      example: 1
+    name:
+      type: string
+      example: 田中 太郎
+    email:
+      type: string
+      format: email
+      example: tanaka.taro@example.com
+  required:
+    - id
+    - name
+    - email

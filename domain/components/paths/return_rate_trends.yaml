@@ -1,0 +1,34 @@
+/api/v1/return_rate_trends:
+  get:
+    tags:
+      - ReturnRateTrend
+    summary: 還元率推移取得
+    description: ログインユーザーの月別還元率推移を返す
+    parameters:
+      - name: from
+        in: query
+        required: false
+        description: 取得開始年月（YYYY-MM形式）
+        schema:
+          type: string
+          example: "2025-09"
+      - name: to
+        in: query
+        required: false
+        description: 取得終了年月（YYYY-MM形式）
+        schema:
+          type: string
+          example: "2026-08"
+    responses:
+      "200":
+        description: 取得成功
+        content:
+          application/json:
+            schema:
+              $ref: '../schemas/return_rate_trend.yaml#/ReturnRateTrendList'
+      "401":
+        description: 未認証
+        content:
+          application/json:
+            schema:
+              $ref: '../schemas/error.yaml#/Error'

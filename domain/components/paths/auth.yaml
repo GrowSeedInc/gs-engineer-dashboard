@@ -1,0 +1,62 @@
+/api/v1/auth/sign_in:
+  post:
+    tags:
+      - Auth
+    summary: ログイン
+    security: []
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              email:
+                type: string
+                format: email
+                example: tanaka.taro@example.com
+              password:
+                type: string
+                format: password
+                example: password
+            required:
+              - email
+              - password
+    responses:
+      "200":
+        description: ログイン成功
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: string
+                  description: JWTトークン
+                  example: eyJhbGciOiJIUzI1NiJ9...
+                user:
+                  $ref: '../schemas/user.yaml#/User'
+              required:
+                - token
+                - user
+      "401":
+        description: 認証失敗
+        content:
+          application/json:
+            schema:
+              $ref: '../schemas/error.yaml#/Error'
+
+/api/v1/auth/sign_out:
+  delete:
+    tags:
+      - Auth
+    summary: ログアウト
+    responses:
+      "200":
+        description: ログアウト成功
+      "401":
+        description: 未認証
+        content:
+          application/json:
+            schema:
+              $ref: '../schemas/error.yaml#/Error'

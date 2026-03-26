@@ -1,0 +1,108 @@
+WorkingHoursEntry:
+  type: object
+  description: 月別稼働時間
+  properties:
+    month:
+      type: string
+      description: 対象年月（YYYY-MM形式）
+      example: "2025-09"
+    business_days:
+      type: integer
+      description: 営業日数
+      example: 20
+    working_days:
+      type: integer
+      description: 稼働日数
+      example: 19
+    paid_leave_days:
+      type: integer
+      description: 有給取得日数
+      example: 1
+    flex_days:
+      type: integer
+      description: フレックス取得日数
+      example: 0
+    special_leave_days:
+      type: integer
+      description: 特別休暇日数
+      example: 0
+    working_hours:
+      type: number
+      format: float
+      description: 稼働時間
+      example: 152.0
+  required:
+    - month
+    - business_days
+    - working_days
+    - paid_leave_days
+    - flex_days
+    - special_leave_days
+    - working_hours
+
+WorkingHoursSummary:
+  type: object
+  description: 合計行
+  properties:
+    business_days:
+      type: integer
+      example: 119
+    working_days:
+      type: integer
+      example: 116
+    paid_leave_days:
+      type: integer
+      example: 3
+    flex_days:
+      type: integer
+      example: 0
+    special_leave_days:
+      type: integer
+      example: 0
+    working_hours:
+      type: number
+      format: float
+      example: 928.0
+  required:
+    - business_days
+    - working_days
+    - paid_leave_days
+    - flex_days
+    - special_leave_days
+    - working_hours
+
+WorkingHoursDetail:
+  type: object
+  properties:
+    user:
+      $ref: './user.yaml#/User'
+    actual:
+      type: object
+      description: 過去6ヶ月（実績）
+      properties:
+        entries:
+          type: array
+          items:
+            $ref: '#/WorkingHoursEntry'
+        summary:
+          $ref: '#/WorkingHoursSummary'
+      required:
+        - entries
+        - summary
+    forecast:
+      type: object
+      description: 将来6ヶ月（見込）
+      properties:
+        entries:
+          type: array
+          items:
+            $ref: '#/WorkingHoursEntry'
+        summary:
+          $ref: '#/WorkingHoursSummary'
+      required:
+        - entries
+        - summary
+  required:
+    - user
+    - actual
+    - forecast

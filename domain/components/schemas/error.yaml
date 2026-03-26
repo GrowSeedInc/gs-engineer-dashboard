@@ -1,0 +1,14 @@
+Error:
+  type: object
+  properties:
+    code:
+      type: string
+      description: エラーコード
+      example: unauthorized
+    message:
+      type: string
+      description: エラーメッセージ
+      example: ログインが必要です
+  required:
+    - code
+    - message

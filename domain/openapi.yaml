@@ -1,0 +1,56 @@
+openapi: 3.1.0
+info:
+  title: GS Engineer Dashboard API
+  version: 0.0.1
+  description: エンジニアダッシュボード API
+
+servers:
+  - url: http://localhost:3000
+    description: Local development
+
+paths:
+  /api/v1/auth/sign_in:
+    $ref: './components/paths/auth.yaml#/~1api~1v1~1auth~1sign_in'
+  /api/v1/auth/sign_out:
+    $ref: './components/paths/auth.yaml#/~1api~1v1~1auth~1sign_out'
+  /api/v1/dashboard:
+    $ref: './components/paths/dashboard.yaml#/~1api~1v1~1dashboard'
+  /api/v1/sales_trends:
+    $ref: './components/paths/sales_trends.yaml#/~1api~1v1~1sales_trends'
+  /api/v1/return_rate_trends:
+    $ref: './components/paths/return_rate_trends.yaml#/~1api~1v1~1return_rate_trends'
+  /api/v1/contracts:
+    $ref: './components/paths/contracts.yaml#/~1api~1v1~1contracts'
+  /api/v1/working_hours:
+    $ref: './components/paths/working_hours.yaml#/~1api~1v1~1working_hours'
+
+components:
+  schemas:
+    User:
+      $ref: './components/schemas/user.yaml#/User'
+    DashboardSummary:
+      $ref: './components/schemas/dashboard_summary.yaml#/DashboardSummary'
+    SalesTrend:
+      $ref: './components/schemas/sales_trend.yaml#/SalesTrend'
+    SalesTrendList:
+      $ref: './components/schemas/sales_trend.yaml#/SalesTrendList'
+    ReturnRateTrend:
+      $ref: './components/schemas/return_rate_trend.yaml#/ReturnRateTrend'
+    ReturnRateTrendList:
+      $ref: './components/schemas/return_rate_trend.yaml#/ReturnRateTrendList'
+    Contract:
+      $ref: './components/schemas/contract.yaml#/Contract'
+    ContractList:
+      $ref: './components/schemas/contract.yaml#/ContractList'
+    WorkingHoursDetail:
+      $ref: './components/schemas/working_hours.yaml#/WorkingHoursDetail'
+    Error:
+      $ref: './components/schemas/error.yaml#/Error'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+security:
+  - bearerAuth: []

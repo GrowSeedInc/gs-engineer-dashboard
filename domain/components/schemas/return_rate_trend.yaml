@@ -1,0 +1,28 @@
+ReturnRateTrend:
+  type: object
+  properties:
+    month:
+      type: string
+      description: 対象年月（YYYY-MM形式）
+      example: "2025-09"
+    return_rate:
+      type: number
+      format: float
+      nullable: true
+      description: 還元率（%）。計算式：月額給与 ÷ 月額単価（税抜）× 100
+      example: 60.0
+  required:
+    - month
+
+ReturnRateTrendList:
+  type: object
+  properties:
+    user:
+      $ref: './user.yaml#/User'
+    trends:
+      type: array
+      items:
+        $ref: '#/ReturnRateTrend'
+  required:
+    - user
+    - trends

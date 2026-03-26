@@ -1,0 +1,19 @@
+/api/v1/working_hours:
+  get:
+    tags:
+      - WorkingHours
+    summary: 稼働時間詳細取得
+    description: ログインユーザーの過去6ヶ月実績・将来6ヶ月見込の稼働時間を返す
+    responses:
+      "200":
+        description: 取得成功
+        content:
+          application/json:
+            schema:
+              $ref: '../schemas/working_hours.yaml#/WorkingHoursDetail'
+      "401":
+        description: 未認証
+        content:
+          application/json:
+            schema:
+              $ref: '../schemas/error.yaml#/Error'

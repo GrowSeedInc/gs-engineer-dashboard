@@ -1,0 +1,32 @@
+SalesTrend:
+  type: object
+  properties:
+    month:
+      type: string
+      description: 対象年月（YYYY-MM形式）
+      example: "2025-09"
+    actual_amount:
+      type: integer
+      nullable: true
+      description: 実績金額（円）。未確定の場合はnull
+      example: 750000
+    forecast_amount:
+      type: integer
+      nullable: true
+      description: 予測金額（円）。実績確定済みの場合はnull
+      example: 780000
+  required:
+    - month
+
+SalesTrendList:
+  type: object
+  properties:
+    user:
+      $ref: './user.yaml#/User'
+    trends:
+      type: array
+      items:
+        $ref: '#/SalesTrend'
+  required:
+    - user
+    - trends

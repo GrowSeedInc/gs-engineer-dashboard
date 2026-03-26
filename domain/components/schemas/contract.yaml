@@ -1,0 +1,67 @@
+ContractMonthStatus:
+  type: object
+  description: 契約の月別受注状況
+  properties:
+    month:
+      type: string
+      description: 対象年月（YYYY-MM形式）
+      example: "2025-09"
+    is_ordered:
+      type: boolean
+      description: 受注済みかどうか
+      example: true
+  required:
+    - month
+    - is_ordered
+
+Contract:
+  type: object
+  properties:
+    id:
+      type: integer
+      example: 1
+    name:
+      type: string
+      description: プロジェクト名
+      example: ECサイトリニューアル
+    unit_price:
+      type: integer
+      description: 月額単価（円）
+      example: 800000
+    period_start:
+      type: string
+      description: 契約開始年月（YYYY-MM形式）
+      example: "2025-09"
+    period_end:
+      type: string
+      description: 契約終了年月（YYYY-MM形式）
+      example: "2026-03"
+    monthly_statuses:
+      type: array
+      description: 表示期間内の月別受注状況
+      items:
+        $ref: '#/ContractMonthStatus'
+  required:
+    - id
+    - name
+    - unit_price
+    - period_start
+    - period_end
+    - monthly_statuses
+
+ContractList:
+  type: object
+  properties:
+    display_months:
+      type: array
+      description: 表示対象の年月一覧（YYYY-MM形式）
+      items:
+        type: string
+      example: ["2025-09", "2025-10", "2025-11", "2025-12", "2026-01", "2026-02", "2026-03", "2026-04", "2026-05", "2026-06", "2026-07", "2026-08"]
+    contracts:
+      type: array
+      items:
+        $ref: '#/Contract'
+  required:
+    - display_months
+    - contracts
