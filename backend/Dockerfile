@@ -2,7 +2,7 @@ FROM ruby:3.2-alpine
 
 RUN apk add --no-cache \
   build-base \
-  mysql-dev \
+  postgresql-dev \
   tzdata \
   nodejs \
   yaml-dev
