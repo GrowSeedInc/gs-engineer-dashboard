@@ -52,7 +52,7 @@ export const SalesTrendChart = () => {
                 tick={{ fontSize: 12, fill: '#666' }}
               />
               <Tooltip
-                formatter={(value: number | undefined) => value !== undefined ? [formatCurrency(value), ''] : ['', '']}
+                formatter={(value) => typeof value === 'number' ? [formatCurrency(value), ''] : ['', '']}
                 labelStyle={{ color: '#212121' }}
               />
               <Bar dataKey="actual" name="実績" fill="#1976d2" maxBarSize={40} />
