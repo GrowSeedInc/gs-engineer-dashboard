@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@aspida/axios": "^1.14.0",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
     "@hookform/resolvers": "^3.9.0",
     "@mui/icons-material": "^7.0.0",
     "@mui/material": "^7.0.0",
@@ -19,7 +21,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.54.0",
-    "recharts": "^2.13.0",
+    "recharts": "^3.8.1",
     "zod": "^3.23.0",
     "zustand": "^5.0.0"
   },

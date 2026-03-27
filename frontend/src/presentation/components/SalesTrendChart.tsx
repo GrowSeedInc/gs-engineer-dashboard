@@ -17,7 +17,7 @@ export const SalesTrendChart = () => {
   const { data, loading, error } = useSalesTrends()
   const userName = useAuthStore((state) => state.user?.name ?? '')
 
-  const chartData = data?.trends.map((t) => ({
+  const chartData = data?.trends?.map((t) => ({
     month: formatYearMonth(t.month),
     actual: t.actual_amount ?? null,
     forecast: t.forecast_amount ?? null,

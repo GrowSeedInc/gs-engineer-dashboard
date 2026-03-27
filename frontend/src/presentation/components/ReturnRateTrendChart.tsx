@@ -17,7 +17,7 @@ export const ReturnRateTrendChart = () => {
   const { data, loading, error } = useReturnRateTrends()
   const userName = useAuthStore((state) => state.user?.name ?? '')
 
-  const chartData = data?.trends.map((t) => ({
+  const chartData = data?.trends?.map((t) => ({
     month: formatYearMonth(t.month),
     returnRate: t.return_rate ?? null,
   }))

@@ -680,3 +680,1043 @@ Completed 204 No Content in 2ms (ActiveRecord: 0.5ms (2 queries, 0 cached) | GC:
   [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
   [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(8115919498647448950)[0m
   [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "monthly_salary", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["name", "田中太郎"], ["email", "[FILTERED]"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["monthly_salary", 0], ["created_at", "2026-03-27 02:50:23.811273"], ["updated_at", "2026-03-27 02:50:23.811273"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/api/v1/return_rate_trends" for 192.168.65.1 at 2026-03-27 04:04:18 +0000
+Started GET "/api/v1/sales_trends" for 192.168.65.1 at 2026-03-27 04:04:18 +0000
+Started GET "/api/v1/dashboard" for 192.168.65.1 at 2026-03-27 04:04:18 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::ReturnRateTrendsController#index as HTML
+Processing by Api::V1::SalesTrendsController#index as HTML
+Completed 401 Unauthorized in 3ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Processing by Api::V1::DashboardController#show as HTML
+Completed 401 Unauthorized in 4ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.1ms)
+
+
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/contracts" for 192.168.65.1 at 2026-03-27 04:04:18 +0000
+Started GET "/api/v1/working_hours" for 192.168.65.1 at 2026-03-27 04:04:18 +0000
+Started GET "/api/v1/return_rate_trends" for 192.168.65.1 at 2026-03-27 04:04:18 +0000
+Processing by Api::V1::WorkingHoursController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:04:18 +0000
+Processing by Api::V1::ReturnRateTrendsController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Processing by Api::V1::ContractsController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/sales_trends" for 192.168.65.1 at 2026-03-27 04:04:18 +0000
+Started GET "/api/v1/dashboard" for 192.168.65.1 at 2026-03-27 04:04:18 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Processing by Api::V1::SalesTrendsController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/working_hours" for 192.168.65.1 at 2026-03-27 04:04:18 +0000
+Processing by Api::V1::DashboardController#show as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/contracts" for 192.168.65.1 at 2026-03-27 04:04:18 +0000
+Processing by Api::V1::WorkingHoursController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Processing by Api::V1::ContractsController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Completed 200 OK in 37ms (Views: 0.1ms | ActiveRecord: 8.8ms (0 queries, 0 cached) | GC: 1.2ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:04:18 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:04:18 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:04:18 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:04:18 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:04:18 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:04:18 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:04:18 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:04:18 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:04:18 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/api/v1/working_hours" for 192.168.65.1 at 2026-03-27 04:04:32 +0000
+Started GET "/api/v1/sales_trends" for 192.168.65.1 at 2026-03-27 04:04:32 +0000
+Started GET "/api/v1/dashboard" for 192.168.65.1 at 2026-03-27 04:04:32 +0000
+Processing by Api::V1::WorkingHoursController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/contracts" for 192.168.65.1 at 2026-03-27 04:04:32 +0000
+Processing by Api::V1::DashboardController#show as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/return_rate_trends" for 192.168.65.1 at 2026-03-27 04:04:32 +0000
+Processing by Api::V1::SalesTrendsController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/working_hours" for 192.168.65.1 at 2026-03-27 04:04:32 +0000
+Processing by Api::V1::ContractsController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:04:32 +0000
+Processing by Api::V1::ReturnRateTrendsController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/dashboard" for 192.168.65.1 at 2026-03-27 04:04:32 +0000
+Processing by Api::V1::WorkingHoursController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/sales_trends" for 192.168.65.1 at 2026-03-27 04:04:32 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/api/v1/contracts" for 192.168.65.1 at 2026-03-27 04:04:32 +0000
+Processing by Api::V1::DashboardController#show as HTML
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.6ms)
+
+
+Started GET "/api/v1/return_rate_trends" for 192.168.65.1 at 2026-03-27 04:04:32 +0000
+Processing by Api::V1::SalesTrendsController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:04:32 +0000
+Processing by Api::V1::ContractsController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Processing by Api::V1::ReturnRateTrendsController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:04:32 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:04:32 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:04:32 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:04:32 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:04:32 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:04:32 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:04:32 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:04:32 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/contracts" for 192.168.65.1 at 2026-03-27 04:04:34 +0000
+Started GET "/api/v1/working_hours" for 192.168.65.1 at 2026-03-27 04:04:34 +0000
+Started GET "/api/v1/return_rate_trends" for 192.168.65.1 at 2026-03-27 04:04:34 +0000
+Processing by Api::V1::ContractsController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/dashboard" for 192.168.65.1 at 2026-03-27 04:04:34 +0000
+Processing by Api::V1::ReturnRateTrendsController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/sales_trends" for 192.168.65.1 at 2026-03-27 04:04:34 +0000
+Processing by Api::V1::WorkingHoursController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/contracts" for 192.168.65.1 at 2026-03-27 04:04:34 +0000
+Processing by Api::V1::DashboardController#show as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Processing by Api::V1::SalesTrendsController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:04:34 +0000
+Started GET "/api/v1/return_rate_trends" for 192.168.65.1 at 2026-03-27 04:04:34 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Processing by Api::V1::ContractsController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/working_hours" for 192.168.65.1 at 2026-03-27 04:04:34 +0000
+Started GET "/api/v1/dashboard" for 192.168.65.1 at 2026-03-27 04:04:34 +0000
+Processing by Api::V1::ReturnRateTrendsController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/sales_trends" for 192.168.65.1 at 2026-03-27 04:04:34 +0000
+Processing by Api::V1::WorkingHoursController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:04:34 +0000
+Processing by Api::V1::DashboardController#show as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Processing by Api::V1::SalesTrendsController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:04:34 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:04:34 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:04:35 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:04:35 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:04:35 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:04:35 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:04:35 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:04:35 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/contracts" for 192.168.65.1 at 2026-03-27 04:04:44 +0000
+Started GET "/api/v1/dashboard" for 192.168.65.1 at 2026-03-27 04:04:44 +0000
+Started GET "/api/v1/sales_trends" for 192.168.65.1 at 2026-03-27 04:04:44 +0000
+Processing by Api::V1::SalesTrendsController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Processing by Api::V1::DashboardController#show as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/working_hours" for 192.168.65.1 at 2026-03-27 04:04:44 +0000
+Started GET "/api/v1/return_rate_trends" for 192.168.65.1 at 2026-03-27 04:04:44 +0000
+Processing by Api::V1::ContractsController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/sales_trends" for 192.168.65.1 at 2026-03-27 04:04:44 +0000
+Processing by Api::V1::ReturnRateTrendsController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:04:44 +0000
+Processing by Api::V1::SalesTrendsController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Processing by Api::V1::WorkingHoursController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/dashboard" for 192.168.65.1 at 2026-03-27 04:04:44 +0000
+Started GET "/api/v1/contracts" for 192.168.65.1 at 2026-03-27 04:04:44 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/return_rate_trends" for 192.168.65.1 at 2026-03-27 04:04:44 +0000
+Processing by Api::V1::ContractsController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Processing by Api::V1::DashboardController#show as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/working_hours" for 192.168.65.1 at 2026-03-27 04:04:45 +0000
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:04:45 +0000
+Processing by Api::V1::ReturnRateTrendsController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:04:45 +0000
+Processing by Api::V1::WorkingHoursController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:04:45 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:04:45 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:04:45 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.1ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:04:45 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:04:45 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.1ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:04:45 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:04:45 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+Started POST "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:05:28 +0000
+Processing by Api::V1::Auth::SessionsController#create as */*
+  Parameters: {"email"=>"[FILTERED]", "password"=>"[FILTERED]", "session"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}}
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Processing by Api::V1::Auth::SessionsController#new as */*
+  Parameters: {"email"=>"[FILTERED]", "password"=>"[FILTERED]", "session"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}}
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+Started POST "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:06:00 +0000
+Processing by Api::V1::Auth::SessionsController#create as */*
+  Parameters: {"email"=>"[FILTERED]", "password"=>"[FILTERED]", "session"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}}
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Processing by Api::V1::Auth::SessionsController#new as */*
+  Parameters: {"email"=>"[FILTERED]", "password"=>"[FILTERED]", "session"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}}
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.8ms)[0m  [1m[33mUPDATE "users" SET "encrypted_password" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["encrypted_password", "[FILTERED]"], ["updated_at", "2026-03-27 04:08:23.141485"], ["id", 1]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+Started POST "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:08:32 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::Auth::SessionsController#create as */*
+  Parameters: {"email"=>"[FILTERED]", "password"=>"[FILTERED]", "user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+Completed 200 OK in 261ms (Views: 0.2ms | ActiveRecord: 6.7ms (1 query, 0 cached) | GC: 1.0ms)
+
+
+Started POST "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:08:40 +0000
+Processing by Api::V1::Auth::SessionsController#create as */*
+  Parameters: {"email"=>"[FILTERED]", "password"=>"[FILTERED]", "user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+Completed 200 OK in 233ms (Views: 0.1ms | ActiveRecord: 0.6ms (1 query, 0 cached) | GC: 0.2ms)
+
+
+Started POST "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:09:28 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::Auth::SessionsController#create as */*
+  Parameters: {"email"=>"[FILTERED]", "password"=>"[FILTERED]", "user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+Completed 200 OK in 260ms (Views: 0.2ms | ActiveRecord: 7.1ms (1 query, 0 cached) | GC: 1.0ms)
+
+
+Started POST "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:09:35 +0000
+Processing by Api::V1::Auth::SessionsController#create as */*
+  Parameters: {"email"=>"[FILTERED]", "password"=>"[FILTERED]", "user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+Completed 200 OK in 234ms (Views: 0.1ms | ActiveRecord: 0.4ms (1 query, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/api/v1/dashboard" for 192.168.65.1 at 2026-03-27 04:09:35 +0000
+Processing by Api::V1::DashboardController#show as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mJwtDenylist Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = $1 LIMIT $2[0m  [["jti", "1c8fab13-1fc2-48fb-856d-2e736ebade0d"], ["LIMIT", 1]]
+  [1m[36mContract Load (0.4ms)[0m  [1m[34mSELECT "contracts".* FROM "contracts" WHERE "contracts"."user_id" = $1 AND (period_start <= $2 AND period_end >= $3) ORDER BY "contracts"."period_start" DESC LIMIT $4[0m  [["user_id", 1], [nil, "2026-03-01"], [nil, "2026-03-01"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:21:in `active_contract_at'
+  [1m[36mCACHE Contract Load (0.0ms)[0m  [1m[34mSELECT "contracts".* FROM "contracts" WHERE "contracts"."user_id" = $1 AND (period_start <= $2 AND period_end >= $3) ORDER BY "contracts"."period_start" DESC LIMIT $4[0m  [["user_id", 1], [nil, "2026-03-01"], [nil, "2026-03-01"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:21:in `active_contract_at'
+Completed 200 OK in 25ms (Views: 0.1ms | ActiveRecord: 3.3ms (4 queries, 1 cached) | GC: 0.2ms)
+
+
+Started GET "/api/v1/sales_trends" for 192.168.65.1 at 2026-03-27 04:09:35 +0000
+Processing by Api::V1::SalesTrendsController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mJwtDenylist Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = $1 LIMIT $2[0m  [["jti", "1c8fab13-1fc2-48fb-856d-2e736ebade0d"], ["LIMIT", 1]]
+  [1m[36mSalesTrend Load (0.4ms)[0m  [1m[34mSELECT "sales_trends".* FROM "sales_trends" WHERE "sales_trends"."user_id" = $1 ORDER BY "sales_trends"."year_month" ASC[0m  [["user_id", 1]]
+  ↳ app/controllers/api/v1/sales_trends_controller.rb:11:in `map'
+Completed 200 OK in 8ms (Views: 0.1ms | ActiveRecord: 2.3ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:09:47 +0000
+Processing by Api::V1::Auth::SessionsController#create as */*
+  Parameters: {"email"=>"[FILTERED]", "password"=>"[FILTERED]", "user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+Completed 200 OK in 234ms (Views: 0.1ms | ActiveRecord: 0.5ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/contracts" for 192.168.65.1 at 2026-03-27 04:09:47 +0000
+Processing by Api::V1::ContractsController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mJwtDenylist Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = $1 LIMIT $2[0m  [["jti", "91e97df2-c46c-4ce8-bde8-9eb8cb4aeadd"], ["LIMIT", 1]]
+  [1m[36mContract Load (0.2ms)[0m  [1m[34mSELECT "contracts".* FROM "contracts" WHERE "contracts"."user_id" = $1 AND (period_start <= $2 AND period_end >= $3) ORDER BY "contracts"."period_start" ASC[0m  [["user_id", 1], [nil, "2027-02-01"], [nil, "2026-03-01"]]
+  ↳ app/controllers/api/v1/contracts_controller.rb:17:in `map'
+Completed 200 OK in 10ms (Views: 0.1ms | ActiveRecord: 0.9ms (3 queries, 0 cached) | GC: 0.4ms)
+
+
+Started GET "/api/v1/working_hours" for 192.168.65.1 at 2026-03-27 04:09:47 +0000
+Processing by Api::V1::WorkingHoursController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mJwtDenylist Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = $1 LIMIT $2[0m  [["jti", "91e97df2-c46c-4ce8-bde8-9eb8cb4aeadd"], ["LIMIT", 1]]
+  [1m[36mWorkingHour Load (0.4ms)[0m  [1m[34mSELECT "working_hours".* FROM "working_hours" WHERE "working_hours"."user_id" = $1 AND "working_hours"."record_type" = $2 AND "working_hours"."year_month" BETWEEN $3 AND $4 ORDER BY "working_hours"."year_month" ASC[0m  [["user_id", 1], ["record_type", "actual"], ["year_month", "2025-10-01"], ["year_month", "2026-03-01"]]
+  ↳ app/controllers/api/v1/working_hours_controller.rb:20:in `map'
+  [1m[36mWorkingHour Load (0.1ms)[0m  [1m[34mSELECT "working_hours".* FROM "working_hours" WHERE "working_hours"."user_id" = $1 AND "working_hours"."record_type" = $2 AND "working_hours"."year_month" BETWEEN $3 AND $4 ORDER BY "working_hours"."year_month" ASC[0m  [["user_id", 1], ["record_type", "forecast"], ["year_month", "2026-03-01"], ["year_month", "2026-08-01"]]
+  ↳ app/controllers/api/v1/working_hours_controller.rb:24:in `map'
+Completed 200 OK in 11ms (Views: 0.1ms | ActiveRecord: 2.7ms (4 queries, 0 cached) | GC: 0.4ms)
+
+
+Started GET "/api/v1/return_rate_trends" for 192.168.65.1 at 2026-03-27 04:09:47 +0000
+Processing by Api::V1::ReturnRateTrendsController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mJwtDenylist Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = $1 LIMIT $2[0m  [["jti", "91e97df2-c46c-4ce8-bde8-9eb8cb4aeadd"], ["LIMIT", 1]]
+  [1m[36mReturnRateTrend Load (0.4ms)[0m  [1m[34mSELECT "return_rate_trends".* FROM "return_rate_trends" WHERE "return_rate_trends"."user_id" = $1 ORDER BY "return_rate_trends"."year_month" ASC[0m  [["user_id", 1]]
+  ↳ app/controllers/api/v1/return_rate_trends_controller.rb:11:in `map'
+Completed 200 OK in 8ms (Views: 0.1ms | ActiveRecord: 2.3ms (3 queries, 0 cached) | GC: 0.1ms)
+
+
+Started GET "/api/v1/dashboard" for 192.168.65.1 at 2026-03-27 04:13:52 +0000
+Started GET "/api/v1/sales_trends" for 192.168.65.1 at 2026-03-27 04:13:52 +0000
+Started GET "/api/v1/working_hours" for 192.168.65.1 at 2026-03-27 04:13:52 +0000
+Processing by Api::V1::SalesTrendsController#index as HTML
+Processing by Api::V1::DashboardController#show as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Processing by Api::V1::WorkingHoursController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/return_rate_trends" for 192.168.65.1 at 2026-03-27 04:13:52 +0000
+Started GET "/api/v1/contracts" for 192.168.65.1 at 2026-03-27 04:13:52 +0000
+Processing by Api::V1::ContractsController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/sales_trends" for 192.168.65.1 at 2026-03-27 04:13:52 +0000
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:13:52 +0000
+Processing by Api::V1::ReturnRateTrendsController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/dashboard" for 192.168.65.1 at 2026-03-27 04:13:52 +0000
+Processing by Api::V1::SalesTrendsController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/working_hours" for 192.168.65.1 at 2026-03-27 04:13:52 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/contracts" for 192.168.65.1 at 2026-03-27 04:13:52 +0000
+Processing by Api::V1::DashboardController#show as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/return_rate_trends" for 192.168.65.1 at 2026-03-27 04:13:52 +0000
+Processing by Api::V1::ContractsController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:13:52 +0000
+Processing by Api::V1::ReturnRateTrendsController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Processing by Api::V1::WorkingHoursController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:13:52 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:13:52 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.5ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:13:52 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:13:53 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:13:53 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:13:53 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:13:53 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:13:53 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/dashboard" for 192.168.65.1 at 2026-03-27 04:13:59 +0000
+Started GET "/api/v1/working_hours" for 192.168.65.1 at 2026-03-27 04:13:59 +0000
+Started GET "/api/v1/sales_trends" for 192.168.65.1 at 2026-03-27 04:13:59 +0000
+Processing by Api::V1::SalesTrendsController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/contracts" for 192.168.65.1 at 2026-03-27 04:13:59 +0000
+Processing by Api::V1::WorkingHoursController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/return_rate_trends" for 192.168.65.1 at 2026-03-27 04:13:59 +0000
+Processing by Api::V1::DashboardController#show as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/sales_trends" for 192.168.65.1 at 2026-03-27 04:13:59 +0000
+Processing by Api::V1::ReturnRateTrendsController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:13:59 +0000
+Processing by Api::V1::ContractsController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/working_hours" for 192.168.65.1 at 2026-03-27 04:13:59 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Processing by Api::V1::WorkingHoursController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/dashboard" for 192.168.65.1 at 2026-03-27 04:13:59 +0000
+Started GET "/api/v1/return_rate_trends" for 192.168.65.1 at 2026-03-27 04:13:59 +0000
+Processing by Api::V1::SalesTrendsController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/contracts" for 192.168.65.1 at 2026-03-27 04:13:59 +0000
+Processing by Api::V1::ReturnRateTrendsController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Processing by Api::V1::ContractsController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:13:59 +0000
+Processing by Api::V1::DashboardController#show as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:13:59 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:13:59 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:13:59 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:13:59 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:13:59 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:13:59 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:13:59 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:13:59 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/sales_trends" for 192.168.65.1 at 2026-03-27 04:14:11 +0000
+Started GET "/api/v1/return_rate_trends" for 192.168.65.1 at 2026-03-27 04:14:11 +0000
+Started GET "/api/v1/dashboard" for 192.168.65.1 at 2026-03-27 04:14:11 +0000
+Processing by Api::V1::SalesTrendsController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/contracts" for 192.168.65.1 at 2026-03-27 04:14:12 +0000
+Processing by Api::V1::DashboardController#show as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/working_hours" for 192.168.65.1 at 2026-03-27 04:14:12 +0000
+Processing by Api::V1::ContractsController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.2ms)
+
+
+Processing by Api::V1::WorkingHoursController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Processing by Api::V1::ReturnRateTrendsController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/api/v1/sales_trends" for 192.168.65.1 at 2026-03-27 04:14:12 +0000
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:14:12 +0000
+Started GET "/api/v1/dashboard" for 192.168.65.1 at 2026-03-27 04:14:12 +0000
+Processing by Api::V1::DashboardController#show as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/contracts" for 192.168.65.1 at 2026-03-27 04:14:12 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/working_hours" for 192.168.65.1 at 2026-03-27 04:14:12 +0000
+Processing by Api::V1::SalesTrendsController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/return_rate_trends" for 192.168.65.1 at 2026-03-27 04:14:12 +0000
+Processing by Api::V1::ContractsController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:14:12 +0000
+Processing by Api::V1::ReturnRateTrendsController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Processing by Api::V1::WorkingHoursController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:14:12 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:14:12 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:14:12 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:14:12 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:14:12 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:14:12 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.1ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:14:12 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:14:12 +0000
+Processing by Api::V1::Auth::SessionsController#new as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/dashboard" for 192.168.65.1 at 2026-03-27 04:18:27 +0000
+Processing by Api::V1::DashboardController#show as */*
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/dashboard" for 192.168.65.1 at 2026-03-27 04:18:35 +0000
+Processing by Api::V1::DashboardController#show as */*
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/dashboard" for 192.168.65.1 at 2026-03-27 04:19:27 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::DashboardController#show as */*
+Completed 401 Unauthorized in 3ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.1ms)
+
+
+Started POST "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 04:20:23 +0000
+Processing by Api::V1::Auth::SessionsController#create as HTML
+  Parameters: {"email"=>"[FILTERED]", "password"=>"[FILTERED]", "user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+Completed 200 OK in 275ms (Views: 0.2ms | ActiveRecord: 9.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/dashboard" for 192.168.65.1 at 2026-03-27 04:20:23 +0000
+Started GET "/api/v1/contracts" for 192.168.65.1 at 2026-03-27 04:20:23 +0000
+Started GET "/api/v1/sales_trends" for 192.168.65.1 at 2026-03-27 04:20:23 +0000
+Processing by Api::V1::DashboardController#show as HTML
+Processing by Api::V1::ContractsController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Processing by Api::V1::SalesTrendsController#index as HTML
+  [1m[36mJwtDenylist Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = $1 LIMIT $2[0m  [["jti", "6859231d-9456-4b19-9f4d-1a6baa8353bd"], ["LIMIT", 1]]
+  [1m[36mContract Load (0.6ms)[0m  [1m[34mSELECT "contracts".* FROM "contracts" WHERE "contracts"."user_id" = $1 AND (period_start <= $2 AND period_end >= $3) ORDER BY "contracts"."period_start" DESC LIMIT $4[0m  [["user_id", 1], [nil, "2026-03-01"], [nil, "2026-03-01"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:21:in `active_contract_at'
+  [1m[36mCACHE Contract Load (0.0ms)[0m  [1m[34mSELECT "contracts".* FROM "contracts" WHERE "contracts"."user_id" = $1 AND (period_start <= $2 AND period_end >= $3) ORDER BY "contracts"."period_start" DESC LIMIT $4[0m  [["user_id", 1], [nil, "2026-03-01"], [nil, "2026-03-01"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:21:in `active_contract_at'
+Completed 200 OK in 29ms (Views: 0.1ms | ActiveRecord: 6.4ms (4 queries, 1 cached) | GC: 0.0ms)
+
+
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mJwtDenylist Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = $1 LIMIT $2[0m  [["jti", "6859231d-9456-4b19-9f4d-1a6baa8353bd"], ["LIMIT", 1]]
+Started GET "/api/v1/return_rate_trends" for 192.168.65.1 at 2026-03-27 04:20:23 +0000
+  [1m[36mContract Load (0.4ms)[0m  [1m[34mSELECT "contracts".* FROM "contracts" WHERE "contracts"."user_id" = $1 AND (period_start <= $2 AND period_end >= $3) ORDER BY "contracts"."period_start" ASC[0m  [["user_id", 1], [nil, "2027-02-01"], [nil, "2026-03-01"]]
+  ↳ app/controllers/api/v1/contracts_controller.rb:17:in `map'
+Completed 200 OK in 36ms (Views: 0.1ms | ActiveRecord: 6.9ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
+  [1m[36mUser Load (2.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Started GET "/api/v1/working_hours" for 192.168.65.1 at 2026-03-27 04:20:23 +0000
+  [1m[36mJwtDenylist Exists? (1.4ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = $1 LIMIT $2[0m  [["jti", "6859231d-9456-4b19-9f4d-1a6baa8353bd"], ["LIMIT", 1]]
+  [1m[36mSalesTrend Load (1.5ms)[0m  [1m[34mSELECT "sales_trends".* FROM "sales_trends" WHERE "sales_trends"."user_id" = $1 ORDER BY "sales_trends"."year_month" ASC[0m  [["user_id", 1]]
+  ↳ app/controllers/api/v1/sales_trends_controller.rb:11:in `map'
+Processing by Api::V1::ReturnRateTrendsController#index as HTML
+Completed 200 OK in 57ms (Views: 0.1ms | ActiveRecord: 24.5ms (3 queries, 0 cached) | GC: 7.5ms)
+
+
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mJwtDenylist Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = $1 LIMIT $2[0m  [["jti", "6859231d-9456-4b19-9f4d-1a6baa8353bd"], ["LIMIT", 1]]
+Started GET "/api/v1/dashboard" for 192.168.65.1 at 2026-03-27 04:20:23 +0000
+  [1m[36mReturnRateTrend Load (0.4ms)[0m  [1m[34mSELECT "return_rate_trends".* FROM "return_rate_trends" WHERE "return_rate_trends"."user_id" = $1 ORDER BY "return_rate_trends"."year_month" ASC[0m  [["user_id", 1]]
+Processing by Api::V1::WorkingHoursController#index as HTML
+  ↳ app/controllers/api/v1/return_rate_trends_controller.rb:11:in `map'
+Completed 200 OK in 15ms (Views: 0.1ms | ActiveRecord: 4.5ms (3 queries, 0 cached) | GC: 0.5ms)
+
+
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Started GET "/api/v1/contracts" for 192.168.65.1 at 2026-03-27 04:20:23 +0000
+  [1m[36mJwtDenylist Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = $1 LIMIT $2[0m  [["jti", "6859231d-9456-4b19-9f4d-1a6baa8353bd"], ["LIMIT", 1]]
+  [1m[36mWorkingHour Load (0.8ms)[0m  [1m[34mSELECT "working_hours".* FROM "working_hours" WHERE "working_hours"."user_id" = $1 AND "working_hours"."record_type" = $2 AND "working_hours"."year_month" BETWEEN $3 AND $4 ORDER BY "working_hours"."year_month" ASC[0m  [["user_id", 1], ["record_type", "actual"], ["year_month", "2025-10-01"], ["year_month", "2026-03-01"]]
+  ↳ app/controllers/api/v1/working_hours_controller.rb:20:in `map'
+  [1m[36mWorkingHour Load (0.5ms)[0m  [1m[34mSELECT "working_hours".* FROM "working_hours" WHERE "working_hours"."user_id" = $1 AND "working_hours"."record_type" = $2 AND "working_hours"."year_month" BETWEEN $3 AND $4 ORDER BY "working_hours"."year_month" ASC[0m  [["user_id", 1], ["record_type", "forecast"], ["year_month", "2026-03-01"], ["year_month", "2026-08-01"]]
+  ↳ app/controllers/api/v1/working_hours_controller.rb:24:in `map'
+Completed 200 OK in 20ms (Views: 0.2ms | ActiveRecord: 6.8ms (4 queries, 0 cached) | GC: 0.7ms)
+
+
+Started GET "/api/v1/sales_trends" for 192.168.65.1 at 2026-03-27 04:20:23 +0000
+Processing by Api::V1::DashboardController#show as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Processing by Api::V1::ContractsController#index as HTML
+  [1m[36mJwtDenylist Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = $1 LIMIT $2[0m  [["jti", "6859231d-9456-4b19-9f4d-1a6baa8353bd"], ["LIMIT", 1]]
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mContract Load (0.3ms)[0m  [1m[34mSELECT "contracts".* FROM "contracts" WHERE "contracts"."user_id" = $1 AND (period_start <= $2 AND period_end >= $3) ORDER BY "contracts"."period_start" DESC LIMIT $4[0m  [["user_id", 1], [nil, "2026-03-01"], [nil, "2026-03-01"], ["LIMIT", 1]]
+  [1m[36mJwtDenylist Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = $1 LIMIT $2[0m  [["jti", "6859231d-9456-4b19-9f4d-1a6baa8353bd"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:21:in `active_contract_at'
+  [1m[36mCACHE Contract Load (0.0ms)[0m  [1m[34mSELECT "contracts".* FROM "contracts" WHERE "contracts"."user_id" = $1 AND (period_start <= $2 AND period_end >= $3) ORDER BY "contracts"."period_start" DESC LIMIT $4[0m  [["user_id", 1], [nil, "2026-03-01"], [nil, "2026-03-01"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:21:in `active_contract_at'
+Completed 200 OK in 11ms (Views: 0.1ms | ActiveRecord: 2.0ms (4 queries, 1 cached) | GC: 0.4ms)
+
+
+  [1m[36mContract Load (0.6ms)[0m  [1m[34mSELECT "contracts".* FROM "contracts" WHERE "contracts"."user_id" = $1 AND (period_start <= $2 AND period_end >= $3) ORDER BY "contracts"."period_start" ASC[0m  [["user_id", 1], [nil, "2027-02-01"], [nil, "2026-03-01"]]
+  ↳ app/controllers/api/v1/contracts_controller.rb:17:in `map'
+Completed 200 OK in 10ms (Views: 0.1ms | ActiveRecord: 2.4ms (3 queries, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/api/v1/return_rate_trends" for 192.168.65.1 at 2026-03-27 04:20:23 +0000
+Started GET "/api/v1/working_hours" for 192.168.65.1 at 2026-03-27 04:20:23 +0000
+Processing by Api::V1::SalesTrendsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mJwtDenylist Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = $1 LIMIT $2[0m  [["jti", "6859231d-9456-4b19-9f4d-1a6baa8353bd"], ["LIMIT", 1]]
+  [1m[36mSalesTrend Load (0.3ms)[0m  [1m[34mSELECT "sales_trends".* FROM "sales_trends" WHERE "sales_trends"."user_id" = $1 ORDER BY "sales_trends"."year_month" ASC[0m  [["user_id", 1]]
+  ↳ app/controllers/api/v1/sales_trends_controller.rb:11:in `map'
+Completed 200 OK in 6ms (Views: 0.1ms | ActiveRecord: 0.9ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
+Processing by Api::V1::WorkingHoursController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mJwtDenylist Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = $1 LIMIT $2[0m  [["jti", "6859231d-9456-4b19-9f4d-1a6baa8353bd"], ["LIMIT", 1]]
+  [1m[36mWorkingHour Load (0.6ms)[0m  [1m[34mSELECT "working_hours".* FROM "working_hours" WHERE "working_hours"."user_id" = $1 AND "working_hours"."record_type" = $2 AND "working_hours"."year_month" BETWEEN $3 AND $4 ORDER BY "working_hours"."year_month" ASC[0m  [["user_id", 1], ["record_type", "actual"], ["year_month", "2025-10-01"], ["year_month", "2026-03-01"]]
+  ↳ app/controllers/api/v1/working_hours_controller.rb:20:in `map'
+  [1m[36mWorkingHour Load (0.3ms)[0m  [1m[34mSELECT "working_hours".* FROM "working_hours" WHERE "working_hours"."user_id" = $1 AND "working_hours"."record_type" = $2 AND "working_hours"."year_month" BETWEEN $3 AND $4 ORDER BY "working_hours"."year_month" ASC[0m  [["user_id", 1], ["record_type", "forecast"], ["year_month", "2026-03-01"], ["year_month", "2026-08-01"]]
+  ↳ app/controllers/api/v1/working_hours_controller.rb:24:in `map'
+Completed 200 OK in 10ms (Views: 0.1ms | ActiveRecord: 2.0ms (4 queries, 0 cached) | GC: 1.9ms)
+
+
+Processing by Api::V1::ReturnRateTrendsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mJwtDenylist Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = $1 LIMIT $2[0m  [["jti", "6859231d-9456-4b19-9f4d-1a6baa8353bd"], ["LIMIT", 1]]
+  [1m[36mReturnRateTrend Load (0.2ms)[0m  [1m[34mSELECT "return_rate_trends".* FROM "return_rate_trends" WHERE "return_rate_trends"."user_id" = $1 ORDER BY "return_rate_trends"."year_month" ASC[0m  [["user_id", 1]]
+  ↳ app/controllers/api/v1/return_rate_trends_controller.rb:11:in `map'
+Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 0.6ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/sales_trends" for 192.168.65.1 at 2026-03-27 04:21:36 +0000
+Started GET "/api/v1/dashboard" for 192.168.65.1 at 2026-03-27 04:21:36 +0000
+Started GET "/api/v1/return_rate_trends" for 192.168.65.1 at 2026-03-27 04:21:36 +0000
+Processing by Api::V1::SalesTrendsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mJwtDenylist Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = $1 LIMIT $2[0m  [["jti", "6859231d-9456-4b19-9f4d-1a6baa8353bd"], ["LIMIT", 1]]
+  [1m[36mSalesTrend Load (0.3ms)[0m  [1m[34mSELECT "sales_trends".* FROM "sales_trends" WHERE "sales_trends"."user_id" = $1 ORDER BY "sales_trends"."year_month" ASC[0m  [["user_id", 1]]
+  ↳ app/controllers/api/v1/sales_trends_controller.rb:11:in `map'
+Completed 200 OK in 7ms (Views: 0.2ms | ActiveRecord: 1.1ms (3 queries, 0 cached) | GC: 0.4ms)
+
+
+Processing by Api::V1::ReturnRateTrendsController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mJwtDenylist Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = $1 LIMIT $2[0m  [["jti", "6859231d-9456-4b19-9f4d-1a6baa8353bd"], ["LIMIT", 1]]
+  [1m[36mReturnRateTrend Load (0.3ms)[0m  [1m[34mSELECT "return_rate_trends".* FROM "return_rate_trends" WHERE "return_rate_trends"."user_id" = $1 ORDER BY "return_rate_trends"."year_month" ASC[0m  [["user_id", 1]]
+  ↳ app/controllers/api/v1/return_rate_trends_controller.rb:11:in `map'
+Started GET "/api/v1/contracts" for 192.168.65.1 at 2026-03-27 04:21:36 +0000
+Completed 200 OK in 6ms (Views: 0.1ms | ActiveRecord: 1.4ms (3 queries, 0 cached) | GC: 0.3ms)
+
+
+Started GET "/api/v1/working_hours" for 192.168.65.1 at 2026-03-27 04:21:36 +0000
+Processing by Api::V1::DashboardController#show as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mJwtDenylist Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = $1 LIMIT $2[0m  [["jti", "6859231d-9456-4b19-9f4d-1a6baa8353bd"], ["LIMIT", 1]]
+  [1m[36mContract Load (0.4ms)[0m  [1m[34mSELECT "contracts".* FROM "contracts" WHERE "contracts"."user_id" = $1 AND (period_start <= $2 AND period_end >= $3) ORDER BY "contracts"."period_start" DESC LIMIT $4[0m  [["user_id", 1], [nil, "2026-03-01"], [nil, "2026-03-01"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:21:in `active_contract_at'
+  [1m[36mCACHE Contract Load (0.0ms)[0m  [1m[34mSELECT "contracts".* FROM "contracts" WHERE "contracts"."user_id" = $1 AND (period_start <= $2 AND period_end >= $3) ORDER BY "contracts"."period_start" DESC LIMIT $4[0m  [["user_id", 1], [nil, "2026-03-01"], [nil, "2026-03-01"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:21:in `active_contract_at'
+Completed 200 OK in 10ms (Views: 0.1ms | ActiveRecord: 0.9ms (4 queries, 1 cached) | GC: 0.4ms)
+
+
+Started GET "/api/v1/sales_trends" for 192.168.65.1 at 2026-03-27 04:21:36 +0000
+Processing by Api::V1::WorkingHoursController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Processing by Api::V1::ContractsController#index as HTML
+  [1m[36mJwtDenylist Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = $1 LIMIT $2[0m  [["jti", "6859231d-9456-4b19-9f4d-1a6baa8353bd"], ["LIMIT", 1]]
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mWorkingHour Load (0.5ms)[0m  [1m[34mSELECT "working_hours".* FROM "working_hours" WHERE "working_hours"."user_id" = $1 AND "working_hours"."record_type" = $2 AND "working_hours"."year_month" BETWEEN $3 AND $4 ORDER BY "working_hours"."year_month" ASC[0m  [["user_id", 1], ["record_type", "actual"], ["year_month", "2025-10-01"], ["year_month", "2026-03-01"]]
+  ↳ app/controllers/api/v1/working_hours_controller.rb:20:in `map'
+  [1m[36mJwtDenylist Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = $1 LIMIT $2[0m  [["jti", "6859231d-9456-4b19-9f4d-1a6baa8353bd"], ["LIMIT", 1]]
+  [1m[36mWorkingHour Load (0.2ms)[0m  [1m[34mSELECT "working_hours".* FROM "working_hours" WHERE "working_hours"."user_id" = $1 AND "working_hours"."record_type" = $2 AND "working_hours"."year_month" BETWEEN $3 AND $4 ORDER BY "working_hours"."year_month" ASC[0m  [["user_id", 1], ["record_type", "forecast"], ["year_month", "2026-03-01"], ["year_month", "2026-08-01"]]
+  ↳ app/controllers/api/v1/working_hours_controller.rb:24:in `map'
+Completed 200 OK in 13ms (Views: 0.1ms | ActiveRecord: 2.1ms (4 queries, 0 cached) | GC: 1.8ms)
+
+
+  [1m[36mContract Load (1.2ms)[0m  [1m[34mSELECT "contracts".* FROM "contracts" WHERE "contracts"."user_id" = $1 AND (period_start <= $2 AND period_end >= $3) ORDER BY "contracts"."period_start" ASC[0m  [["user_id", 1], [nil, "2027-02-01"], [nil, "2026-03-01"]]
+  ↳ app/controllers/api/v1/contracts_controller.rb:17:in `map'
+Completed 200 OK in 11ms (Views: 0.1ms | ActiveRecord: 3.5ms (3 queries, 0 cached) | GC: 0.5ms)
+
+
+Started GET "/api/v1/return_rate_trends" for 192.168.65.1 at 2026-03-27 04:21:36 +0000
+Started GET "/api/v1/dashboard" for 192.168.65.1 at 2026-03-27 04:21:36 +0000
+Processing by Api::V1::SalesTrendsController#index as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Processing by Api::V1::DashboardController#show as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mJwtDenylist Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = $1 LIMIT $2[0m  [["jti", "6859231d-9456-4b19-9f4d-1a6baa8353bd"], ["LIMIT", 1]]
+  [1m[36mJwtDenylist Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = $1 LIMIT $2[0m  [["jti", "6859231d-9456-4b19-9f4d-1a6baa8353bd"], ["LIMIT", 1]]
+  [1m[36mContract Load (0.3ms)[0m  [1m[34mSELECT "contracts".* FROM "contracts" WHERE "contracts"."user_id" = $1 AND (period_start <= $2 AND period_end >= $3) ORDER BY "contracts"."period_start" DESC LIMIT $4[0m  [["user_id", 1], [nil, "2026-03-01"], [nil, "2026-03-01"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:21:in `active_contract_at'
+  [1m[36mCACHE Contract Load (0.0ms)[0m  [1m[34mSELECT "contracts".* FROM "contracts" WHERE "contracts"."user_id" = $1 AND (period_start <= $2 AND period_end >= $3) ORDER BY "contracts"."period_start" DESC LIMIT $4[0m  [["user_id", 1], [nil, "2026-03-01"], [nil, "2026-03-01"], ["LIMIT", 1]]
+  [1m[36mSalesTrend Load (0.8ms)[0m  [1m[34mSELECT "sales_trends".* FROM "sales_trends" WHERE "sales_trends"."user_id" = $1 ORDER BY "sales_trends"."year_month" ASC[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:21:in `active_contract_at'
+Completed 200 OK in 8ms (Views: 0.1ms | ActiveRecord: 0.9ms (4 queries, 1 cached) | GC: 0.2ms)
+
+
+  ↳ app/controllers/api/v1/sales_trends_controller.rb:11:in `map'
+Processing by Api::V1::ReturnRateTrendsController#index as HTML
+Completed 200 OK in 15ms (Views: 0.1ms | ActiveRecord: 2.7ms (3 queries, 0 cached) | GC: 0.5ms)
+
+
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mJwtDenylist Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = $1 LIMIT $2[0m  [["jti", "6859231d-9456-4b19-9f4d-1a6baa8353bd"], ["LIMIT", 1]]
+Started GET "/api/v1/working_hours" for 192.168.65.1 at 2026-03-27 04:21:36 +0000
+Started GET "/api/v1/contracts" for 192.168.65.1 at 2026-03-27 04:21:36 +0000
+  [1m[36mReturnRateTrend Load (0.4ms)[0m  [1m[34mSELECT "return_rate_trends".* FROM "return_rate_trends" WHERE "return_rate_trends"."user_id" = $1 ORDER BY "return_rate_trends"."year_month" ASC[0m  [["user_id", 1]]
+  ↳ app/controllers/api/v1/return_rate_trends_controller.rb:11:in `map'
+Completed 200 OK in 7ms (Views: 0.1ms | ActiveRecord: 1.2ms (3 queries, 0 cached) | GC: 0.2ms)
+
+
+Processing by Api::V1::ContractsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Processing by Api::V1::WorkingHoursController#index as HTML
+  [1m[36mJwtDenylist Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = $1 LIMIT $2[0m  [["jti", "6859231d-9456-4b19-9f4d-1a6baa8353bd"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mContract Load (0.8ms)[0m  [1m[34mSELECT "contracts".* FROM "contracts" WHERE "contracts"."user_id" = $1 AND (period_start <= $2 AND period_end >= $3) ORDER BY "contracts"."period_start" ASC[0m  [["user_id", 1], [nil, "2027-02-01"], [nil, "2026-03-01"]]
+  ↳ app/controllers/api/v1/contracts_controller.rb:17:in `map'
+  [1m[36mJwtDenylist Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = $1 LIMIT $2[0m  [["jti", "6859231d-9456-4b19-9f4d-1a6baa8353bd"], ["LIMIT", 1]]
+Completed 200 OK in 7ms (Views: 0.1ms | ActiveRecord: 1.8ms (3 queries, 0 cached) | GC: 1.1ms)
+
+
+  [1m[36mWorkingHour Load (0.8ms)[0m  [1m[34mSELECT "working_hours".* FROM "working_hours" WHERE "working_hours"."user_id" = $1 AND "working_hours"."record_type" = $2 AND "working_hours"."year_month" BETWEEN $3 AND $4 ORDER BY "working_hours"."year_month" ASC[0m  [["user_id", 1], ["record_type", "actual"], ["year_month", "2025-10-01"], ["year_month", "2026-03-01"]]
+  ↳ app/controllers/api/v1/working_hours_controller.rb:20:in `map'
+  [1m[36mWorkingHour Load (0.2ms)[0m  [1m[34mSELECT "working_hours".* FROM "working_hours" WHERE "working_hours"."user_id" = $1 AND "working_hours"."record_type" = $2 AND "working_hours"."year_month" BETWEEN $3 AND $4 ORDER BY "working_hours"."year_month" ASC[0m  [["user_id", 1], ["record_type", "forecast"], ["year_month", "2026-03-01"], ["year_month", "2026-08-01"]]
+  ↳ app/controllers/api/v1/working_hours_controller.rb:24:in `map'
+Completed 200 OK in 9ms (Views: 0.1ms | ActiveRecord: 1.5ms (4 queries, 0 cached) | GC: 0.9ms)
+
+

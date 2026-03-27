@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resource :dashboard, only: [ :show ]
+      resource :dashboard, only: [ :show ], controller: "dashboard"
       resources :sales_trends, only: [ :index ]
       resources :return_rate_trends, only: [ :index ]
       resources :contracts, only: [ :index ]

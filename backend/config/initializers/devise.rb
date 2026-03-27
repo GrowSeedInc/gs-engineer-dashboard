@@ -1,4 +1,5 @@
 Devise.setup do |config|
+  config.navigational_formats = []
   config.mailer_sender = "noreply@example.com"
 
   require "devise/orm/active_record"
