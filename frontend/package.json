@@ -10,9 +10,11 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@aspida/axios": "^1.14.0",
+    "@hookform/resolvers": "^3.9.0",
     "@mui/icons-material": "^7.0.0",
     "@mui/material": "^7.0.0",
-    "@hookform/resolvers": "^3.9.0",
+    "aspida": "^1.14.0",
     "axios": "^1.7.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -22,6 +24,7 @@
     "zustand": "^5.0.0"
   },
   "devDependencies": {
+    "@types/node": "^25.5.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "@vitejs/plugin-react": "^4.3.0",

@@ -675,3 +675,8 @@ Completed 204 No Content in 2ms (ActiveRecord: 0.5ms (2 queries, 0 cached) | GC:
   [1m[36mJwtDenylist Load (0.2ms)[0m  [1m[34mSELECT "jwt_denylist".* FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = $1 AND "jwt_denylist"."exp" = $2 LIMIT $3[0m  [["jti", "c5352a3a-b13d-4e8b-9498-23c87d9f4e90"], ["exp", "2026-03-28 01:22:53"], ["LIMIT", 1]]
   [1m[36mJwtDenylist Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "jwt_denylist"[0m
   [1m[36mJwtDenylist Load (0.2ms)[0m  [1m[34mSELECT "jwt_denylist".* FROM "jwt_denylist" ORDER BY "jwt_denylist"."id" DESC LIMIT $1[0m  [["LIMIT", 3]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8115919498647448950)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(8115919498647448950)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
