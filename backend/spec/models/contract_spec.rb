@@ -48,7 +48,7 @@ RSpec.describe Contract, type: :model do
 
     it "from_dateからto_dateまでの全ての月を返すこと" do
       result = contract.monthly_statuses_for(Date.new(2025, 4, 1), Date.new(2025, 6, 1))
-      expect(result.map { |r| r[:month] }).to eq(["2025-04", "2025-05", "2025-06"])
+      expect(result.map { |r| r[:month] }).to eq([ "2025-04", "2025-05", "2025-06" ])
     end
   end
 end

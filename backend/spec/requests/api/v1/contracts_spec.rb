@@ -21,7 +21,7 @@ RSpec.describe "Api::V1::Contracts", type: :request do
       it "表示月と契約一覧を返すこと" do
         get "/api/v1/contracts", params: { from: "2025-04", to: "2025-06" }, headers: headers
         body = JSON.parse(response.body)
-        expect(body["display_months"]).to eq(["2025-04", "2025-05", "2025-06"])
+        expect(body["display_months"]).to eq([ "2025-04", "2025-05", "2025-06" ])
         expect(body["contracts"].length).to eq(1)
         expect(body["contracts"][0]["name"]).to eq("Project Alpha")
       end

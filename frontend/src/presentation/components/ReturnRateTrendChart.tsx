@@ -52,7 +52,7 @@ export const ReturnRateTrendChart = () => {
                 tick={{ fontSize: 12, fill: '#666' }}
               />
               <Tooltip
-                formatter={(value: number) => [`${value.toFixed(1)}%`, '還元率']}
+                formatter={(value: number | undefined) => value !== undefined ? [`${value.toFixed(1)}%`, '還元率'] : ['', '還元率']}
                 labelStyle={{ color: '#212121' }}
               />
               <Line
