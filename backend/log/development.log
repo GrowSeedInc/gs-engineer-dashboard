@@ -217,3 +217,461 @@ puma (7.2.0) lib/puma/request.rb:102:in `handle_request'
 puma (7.2.0) lib/puma/server.rb:503:in `process_client'
 puma (7.2.0) lib/puma/server.rb:262:in `block in run'
 puma (7.2.0) lib/puma/thread_pool.rb:182:in `block in spawn_thread'
+  [1m[35m (125.5ms)[0m  [1m[35mCREATE DATABASE `gs_engineer_dashboard_development` DEFAULT CHARACTER SET `utf8mb4`[0m
+  [1m[35m (125.3ms)[0m  [1m[35mCREATE DATABASE `gs_engineer_dashboard_development` DEFAULT CHARACTER SET `utf8mb4`[0m
+  [1m[35m (124.4ms)[0m  [1m[35mCREATE DATABASE `gs_engineer_dashboard_development` DEFAULT CHARACTER SET `utf8mb4`[0m
+  [1m[35m (124.7ms)[0m  [1m[35mCREATE DATABASE `gs_engineer_dashboard_development` DEFAULT CHARACTER SET `utf8mb4`[0m
+  [1m[35m (122.5ms)[0m  [1m[35mCREATE DATABASE `gs_engineer_dashboard_development` DEFAULT CHARACTER SET `utf8mb4`[0m
+  [1m[35m (122.0ms)[0m  [1m[35mCREATE DATABASE `gs_engineer_dashboard_development` DEFAULT CHARACTER SET `utf8mb4`[0m
+  [1m[35m (103.0ms)[0m  [1m[35mCREATE DATABASE `gs_engineer_dashboard_development` DEFAULT CHARACTER SET `utf8mb4`[0m
+  [1m[35m (104.1ms)[0m  [1m[35mCREATE DATABASE `gs_engineer_dashboard_development` DEFAULT CHARACTER SET `utf8mb4`[0m
+  [1m[35m (27.2ms)[0m  [1m[35mCREATE DATABASE "gs_engineer_dashboard_development" ENCODING = 'unicode'[0m
+  [1m[35m (36.4ms)[0m  [1m[35mCREATE DATABASE "gs_engineer_dashboard_test" ENCODING = 'unicode'[0m
+  [1m[35m (4.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8115919498647448950)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2026-03-26 10:10:39.516917', '2026-03-26 10:10:39.516919') RETURNING "key"[0m
+Migrating to DeviseCreateUsers (20250901000001)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.0ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying DEFAULT '' NOT NULL, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp(6), "remember_created_at" timestamp(6), "monthly_salary" integer DEFAULT 0 NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMENT ON COLUMN "users"."monthly_salary" IS '月額給与（円）'[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250901000001') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateJwtDenylist (20250901000002)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE TABLE "jwt_denylist" ("id" bigserial primary key, "jti" character varying NOT NULL, "exp" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_jwt_denylist_on_jti" ON "jwt_denylist" ("jti")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250901000002') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateSalesTrends (20250901000003)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE TABLE "sales_trends" ("id" bigserial primary key, "user_id" bigint NOT NULL, "year_month" date NOT NULL, "actual_amount" integer, "forecast_amount" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_f8f28aab68"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE INDEX "index_sales_trends_on_user_id" ON "sales_trends" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMENT ON COLUMN "sales_trends"."year_month" IS '対象年月（月初日）'[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMENT ON COLUMN "sales_trends"."actual_amount" IS '実績金額（円）。未確定の場合はnull'[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMENT ON COLUMN "sales_trends"."forecast_amount" IS '予測金額（円）。実績確定済みの場合はnull'[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_sales_trends_on_user_id_and_year_month" ON "sales_trends" ("user_id", "year_month")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250901000003') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateReturnRateTrends (20250901000004)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE TABLE "return_rate_trends" ("id" bigserial primary key, "user_id" bigint NOT NULL, "year_month" date NOT NULL, "return_rate" decimal(5,2), "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_9f92c3ca5b"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE INDEX "index_return_rate_trends_on_user_id" ON "return_rate_trends" ("user_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMENT ON COLUMN "return_rate_trends"."year_month" IS '対象年月（月初日）'[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMENT ON COLUMN "return_rate_trends"."return_rate" IS '還元率（%）。月額給与 ÷ 月額単価 × 100'[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_return_rate_trends_on_user_id_and_year_month" ON "return_rate_trends" ("user_id", "year_month")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250901000004') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateContracts (20250901000005)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE TABLE "contracts" ("id" bigserial primary key, "user_id" bigint NOT NULL, "name" character varying NOT NULL, "unit_price" integer NOT NULL, "period_start" date NOT NULL, "period_end" date NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_f191b5ed7a"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE INDEX "index_contracts_on_user_id" ON "contracts" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMENT ON COLUMN "contracts"."name" IS 'プロジェクト名'[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMENT ON COLUMN "contracts"."unit_price" IS '月額単価（円）'[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMENT ON COLUMN "contracts"."period_start" IS '契約開始月（月初日）'[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMENT ON COLUMN "contracts"."period_end" IS '契約終了月（月初日）'[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250901000005') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateContractMonthStatuses (20250901000006)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE "contract_month_statuses" ("id" bigserial primary key, "contract_id" bigint NOT NULL, "year_month" date NOT NULL, "is_ordered" boolean DEFAULT FALSE NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_2267d043a2"
+FOREIGN KEY ("contract_id")
+  REFERENCES "contracts" ("id")
+)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE INDEX "index_contract_month_statuses_on_contract_id" ON "contract_month_statuses" ("contract_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMENT ON COLUMN "contract_month_statuses"."year_month" IS '対象年月（月初日）'[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMENT ON COLUMN "contract_month_statuses"."is_ordered" IS '受注済みかどうか'[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_contract_month_statuses_on_contract_id_and_year_month" ON "contract_month_statuses" ("contract_id", "year_month")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250901000006') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateWorkingHours (20250901000007)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE TABLE "working_hours" ("id" bigserial primary key, "user_id" bigint NOT NULL, "year_month" date NOT NULL, "record_type" character varying NOT NULL, "business_days" integer NOT NULL, "working_days" integer NOT NULL, "paid_leave_days" integer DEFAULT 0 NOT NULL, "flex_days" integer DEFAULT 0 NOT NULL, "special_leave_days" integer DEFAULT 0 NOT NULL, "working_hours" decimal(6,2) NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_be389ad031"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE INDEX "index_working_hours_on_user_id" ON "working_hours" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMENT ON COLUMN "working_hours"."year_month" IS '対象年月（月初日）'[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMENT ON COLUMN "working_hours"."record_type" IS '実績: actual / 見込: forecast'[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMENT ON COLUMN "working_hours"."business_days" IS '営業日数'[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMENT ON COLUMN "working_hours"."working_days" IS '稼働日数'[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMENT ON COLUMN "working_hours"."paid_leave_days" IS '有給取得日数'[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMENT ON COLUMN "working_hours"."flex_days" IS 'カット（フレックス）日数'[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMENT ON COLUMN "working_hours"."special_leave_days" IS '特別休暇日数'[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMENT ON COLUMN "working_hours"."working_hours" IS '稼働時間'[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_working_hours_on_user_id_and_year_month" ON "working_hours" ("user_id", "year_month")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250901000007') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(8115919498647448950)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Count (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "monthly_salary", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["name", "Test User"], ["email", "[FILTERED]"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["monthly_salary", 500000], ["created_at", "2026-03-27 01:13:19.079545"], ["updated_at", "2026-03-27 01:13:19.079545"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+Started POST "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 01:13:24 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::Auth::SessionsController#create as */*
+  Parameters: {"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}}}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+NoMethodError (undefined method `authenticate_user!' for #<Api::V1::Auth::SessionsController:0x0000000000a758>):
+  
+activesupport (7.2.3.1) lib/active_support/callbacks.rb:362:in `block in make_lambda'
+activesupport (7.2.3.1) lib/active_support/callbacks.rb:179:in `block in call'
+actionpack (7.2.3.1) lib/abstract_controller/callbacks.rb:34:in `block (2 levels) in <module:Callbacks>'
+activesupport (7.2.3.1) lib/active_support/callbacks.rb:180:in `call'
+activesupport (7.2.3.1) lib/active_support/callbacks.rb:560:in `block in invoke_before'
+activesupport (7.2.3.1) lib/active_support/callbacks.rb:560:in `each'
+activesupport (7.2.3.1) lib/active_support/callbacks.rb:560:in `invoke_before'
+activesupport (7.2.3.1) lib/active_support/callbacks.rb:109:in `run_callbacks'
+actionpack (7.2.3.1) lib/abstract_controller/callbacks.rb:260:in `process_action'
+actionpack (7.2.3.1) lib/action_controller/metal/rescue.rb:27:in `process_action'
+actionpack (7.2.3.1) lib/action_controller/metal/instrumentation.rb:77:in `block in process_action'
+activesupport (7.2.3.1) lib/active_support/notifications.rb:210:in `block in instrument'
+activesupport (7.2.3.1) lib/active_support/notifications/instrumenter.rb:58:in `instrument'
+activesupport (7.2.3.1) lib/active_support/notifications.rb:210:in `instrument'
+actionpack (7.2.3.1) lib/action_controller/metal/instrumentation.rb:76:in `process_action'
+actionpack (7.2.3.1) lib/action_controller/metal/params_wrapper.rb:259:in `process_action'
+activerecord (7.2.3.1) lib/active_record/railties/controller_runtime.rb:39:in `process_action'
+actionpack (7.2.3.1) lib/abstract_controller/base.rb:152:in `process'
+actionpack (7.2.3.1) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (7.2.3.1) lib/action_controller/metal.rb:335:in `dispatch'
+actionpack (7.2.3.1) lib/action_dispatch/routing/route_set.rb:67:in `dispatch'
+actionpack (7.2.3.1) lib/action_dispatch/routing/route_set.rb:50:in `serve'
+actionpack (7.2.3.1) lib/action_dispatch/routing/mapper.rb:32:in `block in <class:Constraints>'
+actionpack (7.2.3.1) lib/action_dispatch/routing/mapper.rb:62:in `serve'
+actionpack (7.2.3.1) lib/action_dispatch/journey/router.rb:53:in `block in serve'
+actionpack (7.2.3.1) lib/action_dispatch/journey/router.rb:133:in `block in find_routes'
+actionpack (7.2.3.1) lib/action_dispatch/journey/router.rb:126:in `each'
+actionpack (7.2.3.1) lib/action_dispatch/journey/router.rb:126:in `find_routes'
+actionpack (7.2.3.1) lib/action_dispatch/journey/router.rb:34:in `serve'
+actionpack (7.2.3.1) lib/action_dispatch/routing/route_set.rb:896:in `call'
+warden-jwt_auth (0.12.0) lib/warden/jwt_auth/middleware/token_dispatcher.rb:20:in `call'
+warden-jwt_auth (0.12.0) lib/warden/jwt_auth/middleware/revocation_manager.rb:21:in `call'
+rack (3.2.5) lib/rack/builder.rb:283:in `call'
+warden-jwt_auth (0.12.0) lib/warden/jwt_auth/middleware.rb:22:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (3.2.5) lib/rack/etag.rb:29:in `call'
+rack (3.2.5) lib/rack/conditional_get.rb:44:in `call'
+rack (3.2.5) lib/rack/head.rb:15:in `call'
+activerecord (7.2.3.1) lib/active_record/migration.rb:674:in `call'
+actionpack (7.2.3.1) lib/action_dispatch/middleware/callbacks.rb:31:in `block in call'
+activesupport (7.2.3.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.2.3.1) lib/action_dispatch/middleware/callbacks.rb:30:in `call'
+actionpack (7.2.3.1) lib/action_dispatch/middleware/executor.rb:16:in `call'
+actionpack (7.2.3.1) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (7.2.3.1) lib/action_dispatch/middleware/debug_exceptions.rb:31:in `call'
+actionpack (7.2.3.1) lib/action_dispatch/middleware/show_exceptions.rb:32:in `call'
+railties (7.2.3.1) lib/rails/rack/logger.rb:41:in `call_app'
+railties (7.2.3.1) lib/rails/rack/logger.rb:29:in `call'
+actionpack (7.2.3.1) lib/action_dispatch/middleware/remote_ip.rb:96:in `call'
+actionpack (7.2.3.1) lib/action_dispatch/middleware/request_id.rb:33:in `call'
+rack (3.2.5) lib/rack/runtime.rb:24:in `call'
+activesupport (7.2.3.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.2.3.1) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.2.3.1) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.2.3.1) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.2.3.1) lib/action_dispatch/middleware/executor.rb:16:in `call'
+actionpack (7.2.3.1) lib/action_dispatch/middleware/static.rb:27:in `call'
+rack (3.2.5) lib/rack/sendfile.rb:131:in `call'
+actionpack (7.2.3.1) lib/action_dispatch/middleware/host_authorization.rb:143:in `call'
+rack-cors (3.0.0) lib/rack/cors.rb:102:in `call'
+railties (7.2.3.1) lib/rails/engine.rb:535:in `call'
+puma (7.2.0) lib/puma/configuration.rb:296:in `call'
+puma (7.2.0) lib/puma/request.rb:103:in `block in handle_request'
+puma (7.2.0) lib/puma/thread_pool.rb:355:in `with_force_shutdown'
+puma (7.2.0) lib/puma/request.rb:102:in `handle_request'
+puma (7.2.0) lib/puma/server.rb:503:in `process_client'
+puma (7.2.0) lib/puma/server.rb:262:in `block in run'
+puma (7.2.0) lib/puma/thread_pool.rb:182:in `block in spawn_thread'
+Started POST "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 01:14:28 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::Auth::SessionsController#create as */*
+  Parameters: {"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}}}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+NoMethodError (undefined method `authenticate_user!' for #<Api::V1::Auth::SessionsController:0x0000000000a758>):
+  
+activesupport (7.2.3.1) lib/active_support/callbacks.rb:362:in `block in make_lambda'
+activesupport (7.2.3.1) lib/active_support/callbacks.rb:179:in `block in call'
+actionpack (7.2.3.1) lib/abstract_controller/callbacks.rb:34:in `block (2 levels) in <module:Callbacks>'
+activesupport (7.2.3.1) lib/active_support/callbacks.rb:180:in `call'
+activesupport (7.2.3.1) lib/active_support/callbacks.rb:560:in `block in invoke_before'
+activesupport (7.2.3.1) lib/active_support/callbacks.rb:560:in `each'
+activesupport (7.2.3.1) lib/active_support/callbacks.rb:560:in `invoke_before'
+activesupport (7.2.3.1) lib/active_support/callbacks.rb:109:in `run_callbacks'
+actionpack (7.2.3.1) lib/abstract_controller/callbacks.rb:260:in `process_action'
+actionpack (7.2.3.1) lib/action_controller/metal/rescue.rb:27:in `process_action'
+actionpack (7.2.3.1) lib/action_controller/metal/instrumentation.rb:77:in `block in process_action'
+activesupport (7.2.3.1) lib/active_support/notifications.rb:210:in `block in instrument'
+activesupport (7.2.3.1) lib/active_support/notifications/instrumenter.rb:58:in `instrument'
+activesupport (7.2.3.1) lib/active_support/notifications.rb:210:in `instrument'
+actionpack (7.2.3.1) lib/action_controller/metal/instrumentation.rb:76:in `process_action'
+actionpack (7.2.3.1) lib/action_controller/metal/params_wrapper.rb:259:in `process_action'
+activerecord (7.2.3.1) lib/active_record/railties/controller_runtime.rb:39:in `process_action'
+actionpack (7.2.3.1) lib/abstract_controller/base.rb:152:in `process'
+actionpack (7.2.3.1) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (7.2.3.1) lib/action_controller/metal.rb:335:in `dispatch'
+actionpack (7.2.3.1) lib/action_dispatch/routing/route_set.rb:67:in `dispatch'
+actionpack (7.2.3.1) lib/action_dispatch/routing/route_set.rb:50:in `serve'
+actionpack (7.2.3.1) lib/action_dispatch/routing/mapper.rb:32:in `block in <class:Constraints>'
+actionpack (7.2.3.1) lib/action_dispatch/routing/mapper.rb:62:in `serve'
+actionpack (7.2.3.1) lib/action_dispatch/journey/router.rb:53:in `block in serve'
+actionpack (7.2.3.1) lib/action_dispatch/journey/router.rb:133:in `block in find_routes'
+actionpack (7.2.3.1) lib/action_dispatch/journey/router.rb:126:in `each'
+actionpack (7.2.3.1) lib/action_dispatch/journey/router.rb:126:in `find_routes'
+actionpack (7.2.3.1) lib/action_dispatch/journey/router.rb:34:in `serve'
+actionpack (7.2.3.1) lib/action_dispatch/routing/route_set.rb:896:in `call'
+warden-jwt_auth (0.12.0) lib/warden/jwt_auth/middleware/token_dispatcher.rb:20:in `call'
+warden-jwt_auth (0.12.0) lib/warden/jwt_auth/middleware/revocation_manager.rb:21:in `call'
+rack (3.2.5) lib/rack/builder.rb:283:in `call'
+warden-jwt_auth (0.12.0) lib/warden/jwt_auth/middleware.rb:22:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (3.2.5) lib/rack/etag.rb:29:in `call'
+rack (3.2.5) lib/rack/conditional_get.rb:44:in `call'
+rack (3.2.5) lib/rack/head.rb:15:in `call'
+activerecord (7.2.3.1) lib/active_record/migration.rb:674:in `call'
+actionpack (7.2.3.1) lib/action_dispatch/middleware/callbacks.rb:31:in `block in call'
+activesupport (7.2.3.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.2.3.1) lib/action_dispatch/middleware/callbacks.rb:30:in `call'
+actionpack (7.2.3.1) lib/action_dispatch/middleware/executor.rb:16:in `call'
+actionpack (7.2.3.1) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (7.2.3.1) lib/action_dispatch/middleware/debug_exceptions.rb:31:in `call'
+actionpack (7.2.3.1) lib/action_dispatch/middleware/show_exceptions.rb:32:in `call'
+railties (7.2.3.1) lib/rails/rack/logger.rb:41:in `call_app'
+railties (7.2.3.1) lib/rails/rack/logger.rb:29:in `call'
+actionpack (7.2.3.1) lib/action_dispatch/middleware/remote_ip.rb:96:in `call'
+actionpack (7.2.3.1) lib/action_dispatch/middleware/request_id.rb:33:in `call'
+rack (3.2.5) lib/rack/runtime.rb:24:in `call'
+activesupport (7.2.3.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.2.3.1) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.2.3.1) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.2.3.1) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.2.3.1) lib/action_dispatch/middleware/executor.rb:16:in `call'
+actionpack (7.2.3.1) lib/action_dispatch/middleware/static.rb:27:in `call'
+rack (3.2.5) lib/rack/sendfile.rb:131:in `call'
+actionpack (7.2.3.1) lib/action_dispatch/middleware/host_authorization.rb:143:in `call'
+rack-cors (3.0.0) lib/rack/cors.rb:102:in `call'
+railties (7.2.3.1) lib/rails/engine.rb:535:in `call'
+puma (7.2.0) lib/puma/configuration.rb:296:in `call'
+puma (7.2.0) lib/puma/request.rb:103:in `block in handle_request'
+puma (7.2.0) lib/puma/thread_pool.rb:355:in `with_force_shutdown'
+puma (7.2.0) lib/puma/request.rb:102:in `handle_request'
+puma (7.2.0) lib/puma/server.rb:503:in `process_client'
+puma (7.2.0) lib/puma/server.rb:262:in `block in run'
+puma (7.2.0) lib/puma/thread_pool.rb:182:in `block in spawn_thread'
+Started POST "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 01:14:46 +0000
+Processing by Api::V1::Auth::SessionsController#create as */*
+  Parameters: {"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}}}
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+NoMethodError (undefined method `authenticate_user!' for #<Api::V1::Auth::SessionsController:0x0000000000a910>):
+  
+activesupport (7.2.3.1) lib/active_support/callbacks.rb:362:in `block in make_lambda'
+activesupport (7.2.3.1) lib/active_support/callbacks.rb:179:in `block in call'
+actionpack (7.2.3.1) lib/abstract_controller/callbacks.rb:34:in `block (2 levels) in <module:Callbacks>'
+activesupport (7.2.3.1) lib/active_support/callbacks.rb:180:in `call'
+activesupport (7.2.3.1) lib/active_support/callbacks.rb:560:in `block in invoke_before'
+activesupport (7.2.3.1) lib/active_support/callbacks.rb:560:in `each'
+activesupport (7.2.3.1) lib/active_support/callbacks.rb:560:in `invoke_before'
+activesupport (7.2.3.1) lib/active_support/callbacks.rb:109:in `run_callbacks'
+actionpack (7.2.3.1) lib/abstract_controller/callbacks.rb:260:in `process_action'
+actionpack (7.2.3.1) lib/action_controller/metal/rescue.rb:27:in `process_action'
+actionpack (7.2.3.1) lib/action_controller/metal/instrumentation.rb:77:in `block in process_action'
+activesupport (7.2.3.1) lib/active_support/notifications.rb:210:in `block in instrument'
+activesupport (7.2.3.1) lib/active_support/notifications/instrumenter.rb:58:in `instrument'
+activesupport (7.2.3.1) lib/active_support/notifications.rb:210:in `instrument'
+actionpack (7.2.3.1) lib/action_controller/metal/instrumentation.rb:76:in `process_action'
+actionpack (7.2.3.1) lib/action_controller/metal/params_wrapper.rb:259:in `process_action'
+activerecord (7.2.3.1) lib/active_record/railties/controller_runtime.rb:39:in `process_action'
+actionpack (7.2.3.1) lib/abstract_controller/base.rb:152:in `process'
+actionpack (7.2.3.1) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (7.2.3.1) lib/action_controller/metal.rb:335:in `dispatch'
+actionpack (7.2.3.1) lib/action_dispatch/routing/route_set.rb:67:in `dispatch'
+actionpack (7.2.3.1) lib/action_dispatch/routing/route_set.rb:50:in `serve'
+actionpack (7.2.3.1) lib/action_dispatch/routing/mapper.rb:32:in `block in <class:Constraints>'
+actionpack (7.2.3.1) lib/action_dispatch/routing/mapper.rb:62:in `serve'
+actionpack (7.2.3.1) lib/action_dispatch/journey/router.rb:53:in `block in serve'
+actionpack (7.2.3.1) lib/action_dispatch/journey/router.rb:133:in `block in find_routes'
+actionpack (7.2.3.1) lib/action_dispatch/journey/router.rb:126:in `each'
+actionpack (7.2.3.1) lib/action_dispatch/journey/router.rb:126:in `find_routes'
+actionpack (7.2.3.1) lib/action_dispatch/journey/router.rb:34:in `serve'
+actionpack (7.2.3.1) lib/action_dispatch/routing/route_set.rb:896:in `call'
+warden-jwt_auth (0.12.0) lib/warden/jwt_auth/middleware/token_dispatcher.rb:20:in `call'
+warden-jwt_auth (0.12.0) lib/warden/jwt_auth/middleware/revocation_manager.rb:21:in `call'
+rack (3.2.5) lib/rack/builder.rb:283:in `call'
+warden-jwt_auth (0.12.0) lib/warden/jwt_auth/middleware.rb:22:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (3.2.5) lib/rack/etag.rb:29:in `call'
+rack (3.2.5) lib/rack/conditional_get.rb:44:in `call'
+rack (3.2.5) lib/rack/head.rb:15:in `call'
+activerecord (7.2.3.1) lib/active_record/migration.rb:674:in `call'
+actionpack (7.2.3.1) lib/action_dispatch/middleware/callbacks.rb:31:in `block in call'
+activesupport (7.2.3.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.2.3.1) lib/action_dispatch/middleware/callbacks.rb:30:in `call'
+actionpack (7.2.3.1) lib/action_dispatch/middleware/executor.rb:16:in `call'
+actionpack (7.2.3.1) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (7.2.3.1) lib/action_dispatch/middleware/debug_exceptions.rb:31:in `call'
+actionpack (7.2.3.1) lib/action_dispatch/middleware/show_exceptions.rb:32:in `call'
+railties (7.2.3.1) lib/rails/rack/logger.rb:41:in `call_app'
+railties (7.2.3.1) lib/rails/rack/logger.rb:29:in `call'
+actionpack (7.2.3.1) lib/action_dispatch/middleware/remote_ip.rb:96:in `call'
+actionpack (7.2.3.1) lib/action_dispatch/middleware/request_id.rb:33:in `call'
+rack (3.2.5) lib/rack/runtime.rb:24:in `call'
+activesupport (7.2.3.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.2.3.1) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.2.3.1) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.2.3.1) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.2.3.1) lib/action_dispatch/middleware/executor.rb:16:in `call'
+actionpack (7.2.3.1) lib/action_dispatch/middleware/static.rb:27:in `call'
+rack (3.2.5) lib/rack/sendfile.rb:131:in `call'
+actionpack (7.2.3.1) lib/action_dispatch/middleware/host_authorization.rb:143:in `call'
+rack-cors (3.0.0) lib/rack/cors.rb:102:in `call'
+railties (7.2.3.1) lib/rails/engine.rb:535:in `call'
+puma (7.2.0) lib/puma/configuration.rb:296:in `call'
+puma (7.2.0) lib/puma/request.rb:103:in `block in handle_request'
+puma (7.2.0) lib/puma/thread_pool.rb:355:in `with_force_shutdown'
+puma (7.2.0) lib/puma/request.rb:102:in `handle_request'
+puma (7.2.0) lib/puma/server.rb:503:in `process_client'
+puma (7.2.0) lib/puma/server.rb:262:in `block in run'
+puma (7.2.0) lib/puma/thread_pool.rb:182:in `block in spawn_thread'
+Started POST "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 01:18:02 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::Auth::SessionsController#create as */*
+  Parameters: {"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+Completed 200 OK in 276ms (Views: 0.2ms | ActiveRecord: 7.6ms (1 query, 0 cached) | GC: 1.3ms)
+
+
+Started POST "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 01:19:51 +0000
+Processing by Api::V1::Auth::SessionsController#create as */*
+  Parameters: {"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+Completed 200 OK in 241ms (Views: 0.2ms | ActiveRecord: 0.4ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started DELETE "/api/v1/auth/sign_out" for 192.168.65.1 at 2026-03-27 01:19:51 +0000
+Processing by Api::V1::Auth::SessionsController#destroy as */*
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+ArgumentError (wrong number of arguments (given 1, expected 0)):
+  
+app/controllers/api/v1/auth/sessions_controller.rb:20:in `respond_to_on_destroy'
+Started POST "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 01:20:16 +0000
+Processing by Api::V1::Auth::SessionsController#create as */*
+  Parameters: {"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+Completed 200 OK in 236ms (Views: 0.1ms | ActiveRecord: 2.5ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started DELETE "/api/v1/auth/sign_out" for 192.168.65.1 at 2026-03-27 01:20:16 +0000
+Processing by Api::V1::Auth::SessionsController#destroy as */*
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+ArgumentError (wrong number of arguments (given 1, expected 0)):
+  
+app/controllers/api/v1/auth/sessions_controller.rb:20:in `respond_to_on_destroy'
+Started POST "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 01:20:59 +0000
+Processing by Api::V1::Auth::SessionsController#create as */*
+  Parameters: {"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+Completed 200 OK in 236ms (Views: 0.2ms | ActiveRecord: 2.7ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started DELETE "/api/v1/auth/sign_out" for 192.168.65.1 at 2026-03-27 01:20:59 +0000
+Processing by Api::V1::Auth::SessionsController#destroy as */*
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mJwtDenylist Load (0.4ms)[0m  [1m[34mSELECT "jwt_denylist".* FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = $1 AND "jwt_denylist"."exp" = $2 LIMIT $3[0m  [["jti", "cf5431c8-2645-47ee-8546-7320288efcce"], ["exp", "2026-03-28 01:20:59"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJwtDenylist Create (0.4ms)[0m  [1m[32mINSERT INTO "jwt_denylist" ("jti", "exp") VALUES ($1, $2) RETURNING "id"[0m  [["jti", "cf5431c8-2645-47ee-8546-7320288efcce"], ["exp", "2026-03-28 01:20:59"]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+Started POST "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 01:22:42 +0000
+Processing by Api::V1::Auth::SessionsController#create as */*
+  Parameters: {"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+Completed 200 OK in 240ms (Views: 0.2ms | ActiveRecord: 2.5ms (1 query, 0 cached) | GC: 3.4ms)
+
+
+Started DELETE "/api/v1/auth/sign_out" for 192.168.65.1 at 2026-03-27 01:22:42 +0000
+Processing by Api::V1::Auth::SessionsController#destroy as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth/sessions_controller.rb:9:in `destroy'
+  [1m[36mJwtDenylist Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = $1 LIMIT $2[0m  [["jti", "f9eb498c-7ae0-4c6b-854a-c745140f352c"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth/sessions_controller.rb:9:in `destroy'
+Completed 204 No Content in 6ms (ActiveRecord: 1.0ms (2 queries, 0 cached) | GC: 0.2ms)
+
+
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mJwtDenylist Load (0.2ms)[0m  [1m[34mSELECT "jwt_denylist".* FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = $1 AND "jwt_denylist"."exp" = $2 LIMIT $3[0m  [["jti", "f9eb498c-7ae0-4c6b-854a-c745140f352c"], ["exp", "2026-03-28 01:22:42"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJwtDenylist Create (0.2ms)[0m  [1m[32mINSERT INTO "jwt_denylist" ("jti", "exp") VALUES ($1, $2) RETURNING "id"[0m  [["jti", "f9eb498c-7ae0-4c6b-854a-c745140f352c"], ["exp", "2026-03-28 01:22:42"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+Started POST "/api/v1/auth/sign_in" for 192.168.65.1 at 2026-03-27 01:22:52 +0000
+Processing by Api::V1::Auth::SessionsController#create as */*
+  Parameters: {"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+Completed 200 OK in 244ms (Views: 0.1ms | ActiveRecord: 0.5ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started DELETE "/api/v1/auth/sign_out" for 192.168.65.1 at 2026-03-27 01:22:53 +0000
+Processing by Api::V1::Auth::SessionsController#destroy as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth/sessions_controller.rb:9:in `destroy'
+  [1m[36mJwtDenylist Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = $1 LIMIT $2[0m  [["jti", "c5352a3a-b13d-4e8b-9498-23c87d9f4e90"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth/sessions_controller.rb:9:in `destroy'
+Completed 204 No Content in 3ms (ActiveRecord: 0.5ms (2 queries, 0 cached) | GC: 0.1ms)
+
+
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mJwtDenylist Load (0.1ms)[0m  [1m[34mSELECT "jwt_denylist".* FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = $1 AND "jwt_denylist"."exp" = $2 LIMIT $3[0m  [["jti", "c5352a3a-b13d-4e8b-9498-23c87d9f4e90"], ["exp", "2026-03-28 01:22:53"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJwtDenylist Create (0.9ms)[0m  [1m[32mINSERT INTO "jwt_denylist" ("jti", "exp") VALUES ($1, $2) RETURNING "id"[0m  [["jti", "c5352a3a-b13d-4e8b-9498-23c87d9f4e90"], ["exp", "2026-03-28 01:22:53"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+Started DELETE "/api/v1/auth/sign_out" for 192.168.65.1 at 2026-03-27 01:22:53 +0000
+Processing by Api::V1::Auth::SessionsController#destroy as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth/sessions_controller.rb:9:in `destroy'
+  [1m[36mJwtDenylist Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = $1 LIMIT $2[0m  [["jti", "c5352a3a-b13d-4e8b-9498-23c87d9f4e90"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth/sessions_controller.rb:9:in `destroy'
+Completed 204 No Content in 2ms (ActiveRecord: 0.5ms (2 queries, 0 cached) | GC: 0.2ms)
+
+
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mJwtDenylist Load (0.2ms)[0m  [1m[34mSELECT "jwt_denylist".* FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = $1 AND "jwt_denylist"."exp" = $2 LIMIT $3[0m  [["jti", "c5352a3a-b13d-4e8b-9498-23c87d9f4e90"], ["exp", "2026-03-28 01:22:53"], ["LIMIT", 1]]
+  [1m[36mJwtDenylist Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "jwt_denylist"[0m
+  [1m[36mJwtDenylist Load (0.2ms)[0m  [1m[34mSELECT "jwt_denylist".* FROM "jwt_denylist" ORDER BY "jwt_denylist"."id" DESC LIMIT $1[0m  [["LIMIT", 3]]

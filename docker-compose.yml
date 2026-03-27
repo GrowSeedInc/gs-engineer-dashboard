@@ -23,7 +23,9 @@ services:
       - ./backend:/app
     environment:
       - RAILS_ENV=development
-      - DATABASE_URL=mysql2://root:password@db:3306/gs_engineer_dashboard_development
+      - DB_HOST=db
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=password
       - REDIS_URL=redis://redis:6379/0
       - DEVISE_JWT_SECRET_KEY=changeme
     depends_on:
@@ -39,21 +41,24 @@ services:
       - ./backend:/app
     environment:
       - RAILS_ENV=development
-      - DATABASE_URL=mysql2://root:password@db:3306/gs_engineer_dashboard_development
+      - DB_HOST=db
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=password
       - REDIS_URL=redis://redis:6379/0
     depends_on:
       - db
       - redis
 
   db:
-    image: mysql:8.0
+    image: postgres:16-alpine
     ports:
-      - "3306:3306"
+      - "5432:5432"
     environment:
-      - MYSQL_ROOT_PASSWORD=password
-      - MYSQL_DATABASE=gs_engineer_dashboard_development
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=gs_engineer_dashboard_development
     volumes:
-      - db_data:/var/lib/mysql
+      - db_data:/var/lib/postgresql/data
 
   redis:
     image: redis:7-alpine
