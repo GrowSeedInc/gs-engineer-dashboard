@@ -93,7 +93,7 @@ gs-engineer-dashboard/
 
 - **Linter**: `rubocop-rails-omakase` を使用。設定は `backend/.rubocop.yml` を参照。
 - **コントローラ**: `ActionController::API` を継承。ビューは持たない。
-- **thin_controller, fat_model**: コントローラは薄く、モデルを太く
+- **Skinny Controller, Fat Model**: コントローラは薄く、モデルを太く
 - **ルーティング**: すべて `/api/v1/` 以下にネストする。
 - **認証**: `before_action :authenticate_user!` をベースコントローラに記載し、必要なアクションに適用。
 - **モデルバリデーション**: DBの制約（`null: false`, `unique index`）と対応するバリデーションを必ずモデルにも記述する。

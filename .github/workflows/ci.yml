@@ -31,17 +31,19 @@ jobs:
       run:
         working-directory: backend
     services:
-      mysql:
-        image: mysql:8.0
+      postgres:
+        image: postgres:16
         env:
-          MYSQL_ROOT_PASSWORD: password
-          MYSQL_DATABASE: gs_engineer_dashboard_test
+          POSTGRES_PASSWORD: password
+          POSTGRES_DB: gs_engineer_dashboard_test
         ports:
-          - 3306:3306
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+          - 5432:5432
+        options: --health-cmd="pg_isready" --health-interval=10s --health-timeout=5s --health-retries=3
     env:
       RAILS_ENV: test
-      DATABASE_URL: mysql2://root:password@127.0.0.1:3306/gs_engineer_dashboard_test
+      DB_HOST: 127.0.0.1
+      DB_USERNAME: postgres
+      DB_PASSWORD: password
     steps:
       - uses: actions/checkout@v4
       - uses: ruby/setup-ruby@v1

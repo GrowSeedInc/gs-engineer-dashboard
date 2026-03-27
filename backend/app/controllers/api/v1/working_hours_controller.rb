@@ -18,11 +18,11 @@ module Api
           user: user_json(current_user),
           actual: {
             entries: actual_entries.map { |e| entry_json(e) },
-            summary: summary_json(actual_entries)
+            summary: WorkingHours.summary(actual_entries)
           },
           forecast: {
             entries: forecast_entries.map { |e| entry_json(e) },
-            summary: summary_json(forecast_entries)
+            summary: WorkingHours.summary(forecast_entries)
           }
         }
       end
@@ -38,17 +38,6 @@ module Api
           flex_days: entry.flex_days,
           special_leave_days: entry.special_leave_days,
           working_hours: entry.working_hours.to_f
-        }
-      end
-
-      def summary_json(entries)
-        {
-          business_days: entries.sum(&:business_days),
-          working_days: entries.sum(&:working_days),
-          paid_leave_days: entries.sum(&:paid_leave_days),
-          flex_days: entries.sum(&:flex_days),
-          special_leave_days: entries.sum(&:special_leave_days),
-          working_hours: entries.sum { |e| e.working_hours.to_f }
         }
       end
     end

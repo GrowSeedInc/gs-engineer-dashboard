@@ -16,12 +16,6 @@ module Api
           }
         }
       end
-
-      private
-
-      def parse_year_month(str)
-        Date.strptime(str, "%Y-%m").beginning_of_month
-      end
     end
   end
 end

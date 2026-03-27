@@ -12,6 +12,10 @@ class ApplicationController < ActionController::API
     { id: user.id, name: user.name, email: user.email }
   end
 
+  def parse_year_month(str)
+    Date.strptime(str, "%Y-%m").beginning_of_month
+  end
+
   def not_found
     render json: { error: "Not found" }, status: :not_found
   end
