@@ -6,15 +6,25 @@ class Contract < ApplicationRecord
 
   def monthly_statuses_for(from_date, to_date)
     statuses_by_month = contract_month_statuses
-      .select { |s| s.year_month >= from_date && s.year_month <= to_date }
+      .where(year_month: from_date..to_date)
       .index_by { |s| s.year_month.strftime("%Y-%m") }
 
-    (from_date..to_date)
-      .select { |d| d.day == 1 }
-      .map { |d|
-        month_str = d.strftime("%Y-%m")
-        status = statuses_by_month[month_str]
-        { month: month_str, is_ordered: status&.is_ordered || false }
-      }
+    months_between(from_date, to_date).map { |month|
+      month_str = month.strftime("%Y-%m")
+      status = statuses_by_month[month_str]
+      { month: month_str, is_ordered: status&.is_ordered || false }
+    }
+  end
+
+  private
+
+  def months_between(from_date, to_date)
+    months = []
+    month = from_date
+    while month <= to_date
+      months << month
+      month = month >> 1
+    end
+    months
   end
 end

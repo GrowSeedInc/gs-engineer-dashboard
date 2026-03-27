@@ -1,4 +1,4 @@
-class WorkingHours < ApplicationRecord
+class WorkingHour < ApplicationRecord
   belongs_to :user
 
   enum :record_type, { actual: "actual", forecast: "forecast" }

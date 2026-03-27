@@ -18,11 +18,11 @@ module Api
           user: user_json(current_user),
           actual: {
             entries: actual_entries.map { |e| entry_json(e) },
-            summary: WorkingHours.summary(actual_entries)
+            summary: WorkingHour.summary(actual_entries)
           },
           forecast: {
             entries: forecast_entries.map { |e| entry_json(e) },
-            summary: WorkingHours.summary(forecast_entries)
+            summary: WorkingHour.summary(forecast_entries)
           }
         }
       end
