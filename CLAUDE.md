@@ -7,6 +7,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 エンジニア個人の売上推移・還元率・受注契約・稼働時間を一元管理するダッシュボードアプリ。
 月次の実績・予測データをグラフや表で可視化し、契約の受注状況を時系列で確認できる。
 
+## デザイン仕様
+Figmaで作成
+[Figmaリンク](https://www.figma.com/design/mRIi3sLN2dpaQlA6yW0udz/gs-engineer-dashboard?node-id=6-880&m=dev)
+
 ---
 
 ## 技術スタック
@@ -112,66 +116,3 @@ gs-engineer-dashboard/
 - **APIコール**: 直接 `axios` を呼ばず、`infrastructure/` 層の aspida ラッパーを経由する。
 - **レイヤー依存方向**: `presentation` → `application` → `infrastructure` → `domain` の一方向のみ許可。逆方向の依存は禁止。
 - **型定義**: APIの型は `domain/api/` の aspida 生成ファイルから import する。手動で重複定義しない。
-
----
-
-## よく使うコマンド
-
-### Docker Compose
-
-```bash
-docker compose up -d                          # 全サービスをバックグラウンドで起動
-docker compose down                           # 全サービス停止
-docker compose up -d backend                  # バックエンドのみ起動
-docker compose logs -f backend                # バックエンドのログを追跡
-docker compose exec backend bash              # バックエンドコンテナに入る
-docker compose exec frontend sh               # フロントエンドコンテナに入る
-docker compose build --no-cache               # イメージを再ビルド
-```
-
-### Rails (backend)
-
-```bash
-# DB操作
-docker compose exec backend bundle exec rails db:migrate
-docker compose exec backend bundle exec rails db:seed
-docker compose exec backend bundle exec rails db:reset   # drop + create + migrate + seed
-
-# テスト
-docker compose exec backend bundle exec rails test                                  # 全テスト
-docker compose exec backend bundle exec rails test test/models/user_test.rb        # 単一ファイル
-docker compose exec backend bundle exec rspec                                       # RSpec全件
-docker compose exec backend bundle exec rspec spec/models/user_spec.rb             # 単一spec
-
-# Lint
-docker compose exec backend bundle exec rubocop
-docker compose exec backend bundle exec rubocop -a    # 自動修正
-
-# その他
-docker compose exec backend bundle exec rails routes   # ルーティング一覧
-docker compose exec backend bundle exec rails console  # Railsコンソール
-```
-
-### Frontend
-
-```bash
-# コンテナ内での操作
-docker compose exec frontend npm run dev          # 開発サーバー起動（:5173）
-docker compose exec frontend npm run typecheck    # 型チェック
-docker compose exec frontend npm run build        # プロダクションビルド
-
-# ローカルでの操作
-cd frontend && npm run dev
-cd frontend && npm run typecheck
-```
-
-### Domain (APIコード生成)
-
-```bash
-cd domain
-
-npm run bundle            # openapi.yaml → generated/openapi.bundled.yaml にバンドル
-npm run generate:aspida   # aspida型クライアント生成 → api/
-npm run generate:zod      # Zodスキーマ生成 → generated/zod/schemas.ts
-npm run generate          # 上記すべてを一括実行（APIスキーマ変更後は必ず実行）
-```

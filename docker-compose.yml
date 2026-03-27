@@ -7,6 +7,7 @@ services:
       - "5173:5173"
     volumes:
       - ./frontend:/app
+      - ./domain:/domain
       - /app/node_modules
     environment:
       - VITE_API_BASE_URL=http://localhost:3000
