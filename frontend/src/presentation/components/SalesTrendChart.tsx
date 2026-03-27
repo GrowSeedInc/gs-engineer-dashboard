@@ -1,4 +1,4 @@
-import { Paper, Typography, Skeleton, Alert } from '@mui/material'
+import { Box, Paper, Typography, Skeleton, Alert } from '@mui/material'
 import {
   BarChart,
   Bar,
@@ -6,7 +6,6 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
   ResponsiveContainer,
 } from 'recharts'
 import { useSalesTrends } from '@/application/hooks/useSalesTrends'
@@ -34,32 +33,43 @@ export const SalesTrendChart = () => {
       {error && <Alert severity="error">{error}</Alert>}
 
       {chartData && (
-        <ResponsiveContainer width="100%" height={320}>
-          <BarChart
-            data={chartData}
-            margin={{ top: 5, right: 5, bottom: 65, left: 20 }}
-          >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis
-              dataKey="month"
-              tick={{ fontSize: 12, fill: '#666' }}
-              angle={-45}
-              textAnchor="end"
-              interval={0}
-            />
-            <YAxis
-              tickFormatter={(v: number) => `¥${(v / 10000).toFixed(0)}万`}
-              tick={{ fontSize: 12, fill: '#666' }}
-            />
-            <Tooltip
-              formatter={(value: number) => [formatCurrency(value), '']}
-              labelStyle={{ color: '#212121' }}
-            />
-            <Legend verticalAlign="bottom" wrapperStyle={{ paddingTop: 8 }} />
-            <Bar dataKey="actual" name="実績" fill="#1976d2" maxBarSize={40} />
-            <Bar dataKey="forecast" name="予測" fill="#64b5f6" maxBarSize={40} />
-          </BarChart>
-        </ResponsiveContainer>
+        <>
+          <ResponsiveContainer width="100%" height={300}>
+            <BarChart
+              data={chartData}
+              margin={{ top: 5, right: 5, bottom: 60, left: 20 }}
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis
+                dataKey="month"
+                tick={{ fontSize: 12, fill: '#666' }}
+                angle={-45}
+                textAnchor="end"
+                interval={0}
+              />
+              <YAxis
+                tickFormatter={(v: number) => `¥${(v / 10000).toFixed(0)}万`}
+                tick={{ fontSize: 12, fill: '#666' }}
+              />
+              <Tooltip
+                formatter={(value: number) => [formatCurrency(value), '']}
+                labelStyle={{ color: '#212121' }}
+              />
+              <Bar dataKey="actual" name="実績" fill="#1976d2" maxBarSize={40} />
+              <Bar dataKey="forecast" name="予測" fill="#64b5f6" maxBarSize={40} />
+            </BarChart>
+          </ResponsiveContainer>
+          <Box sx={{ display: 'flex', justifyContent: 'center', gap: 3, mt: 1 }}>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.75 }}>
+              <Box sx={{ width: 12, height: 12, bgcolor: '#64b5f6', borderRadius: 0.5 }} />
+              <Typography variant="caption" color="text.secondary">予測</Typography>
+            </Box>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.75 }}>
+              <Box sx={{ width: 12, height: 12, bgcolor: '#1976d2', borderRadius: 0.5 }} />
+              <Typography variant="caption" color="text.secondary">実績</Typography>
+            </Box>
+          </Box>
+        </>
       )}
     </Paper>
   )

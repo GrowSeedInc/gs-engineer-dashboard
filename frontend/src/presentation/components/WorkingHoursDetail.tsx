@@ -1,5 +1,4 @@
 import { Box, Paper, Typography, Skeleton, Alert } from '@mui/material'
-import AccessTimeIcon from '@mui/icons-material/AccessTime'
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth'
 import type { WorkingHoursEntry, WorkingHoursSummary } from '@domain/api/@types'
 import { useWorkingHours } from '@/application/hooks/useWorkingHours'
@@ -204,8 +203,7 @@ export const WorkingHoursDetail = () => {
   return (
     <Paper elevation={2} sx={{ p: 2 }}>
       {/* セクションタイトル */}
-      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 3 }}>
-        <AccessTimeIcon color="primary" sx={{ fontSize: 28 }} />
+      <Box sx={{ mb: 3 }}>
         <Typography variant="h6" fontWeight="medium">
           稼働時間詳細 - {userName}
         </Typography>

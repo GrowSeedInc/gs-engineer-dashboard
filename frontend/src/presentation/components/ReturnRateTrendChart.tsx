@@ -6,7 +6,6 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
   ResponsiveContainer,
 } from 'recharts'
 import { useReturnRateTrends } from '@/application/hooks/useReturnRateTrends'
@@ -33,40 +32,47 @@ export const ReturnRateTrendChart = () => {
       {error && <Alert severity="error">{error}</Alert>}
 
       {chartData && (
-        <ResponsiveContainer width="100%" height={320}>
-          <LineChart
-            data={chartData}
-            margin={{ top: 5, right: 5, bottom: 65, left: 20 }}
-          >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis
-              dataKey="month"
-              tick={{ fontSize: 12, fill: '#666' }}
-              angle={-45}
-              textAnchor="end"
-              interval={0}
-            />
-            <YAxis
-              domain={[0, 100]}
-              tickFormatter={(v: number) => `${v}%`}
-              tick={{ fontSize: 12, fill: '#666' }}
-            />
-            <Tooltip
-              formatter={(value: number) => [`${value.toFixed(1)}%`, '還元率']}
-              labelStyle={{ color: '#212121' }}
-            />
-            <Legend verticalAlign="bottom" wrapperStyle={{ paddingTop: 8 }} />
-            <Line
-              type="monotone"
-              dataKey="returnRate"
-              name="還元率"
-              stroke="#1976d2"
-              strokeWidth={2}
-              dot={{ r: 4, fill: '#1976d2' }}
-              connectNulls={false}
-            />
-          </LineChart>
-        </ResponsiveContainer>
+        <>
+          <ResponsiveContainer width="100%" height={300}>
+            <LineChart
+              data={chartData}
+              margin={{ top: 5, right: 5, bottom: 60, left: 20 }}
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis
+                dataKey="month"
+                tick={{ fontSize: 12, fill: '#666' }}
+                angle={-45}
+                textAnchor="end"
+                interval={0}
+              />
+              <YAxis
+                domain={[0, 100]}
+                tickFormatter={(v: number) => `${v}%`}
+                tick={{ fontSize: 12, fill: '#666' }}
+              />
+              <Tooltip
+                formatter={(value: number) => [`${value.toFixed(1)}%`, '還元率']}
+                labelStyle={{ color: '#212121' }}
+              />
+              <Line
+                type="monotone"
+                dataKey="returnRate"
+                name="還元率"
+                stroke="#1976d2"
+                strokeWidth={2}
+                dot={{ r: 4, fill: '#1976d2' }}
+                connectNulls={false}
+              />
+            </LineChart>
+          </ResponsiveContainer>
+          <Box sx={{ display: 'flex', justifyContent: 'center', gap: 3, mt: 1 }}>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.75 }}>
+              <Box sx={{ width: 12, height: 2, bgcolor: '#1976d2' }} />
+              <Typography variant="caption" color="text.secondary">還元率</Typography>
+            </Box>
+          </Box>
+        </>
       )}
 
       <Box sx={{ mt: 'auto', pt: 1.5, px: 1.5, py: 1.5, bgcolor: 'grey.50', borderRadius: 1 }}>

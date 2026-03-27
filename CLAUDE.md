@@ -7,6 +7,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 エンジニア個人の売上推移・還元率・受注契約・稼働時間を一元管理するダッシュボードアプリ。
 月次の実績・予測データをグラフや表で可視化し、契約の受注状況を時系列で確認できる。
 
+## デザイン仕様
+Figmaで作成
+[Figmaリンク](https://www.figma.com/design/mRIi3sLN2dpaQlA6yW0udz/gs-engineer-dashboard?node-id=6-880&m=dev)
+
 ---
 
 ## 技術スタック

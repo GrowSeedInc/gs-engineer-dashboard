@@ -6,4 +6,7 @@ export const authRepository = {
 
   signOut: () =>
     apiClient.api.v1.auth.sign_out.$delete(),
+
+  switchUser: (userId: number) =>
+    apiClient.api.v1.auth.switch.$post({ body: { user_id: userId } }),
 }

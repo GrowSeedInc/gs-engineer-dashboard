@@ -19,6 +19,7 @@ const formatMonthHeader = (yyyyMM: string): string => {
 type CellStatus = 'ordered' | 'unordered' | 'empty'
 
 const getCellStatus = (contract: Contract, month: string): CellStatus => {
+  if (month < contract.period_start || month > contract.period_end) return 'empty'
   const status = contract.monthly_statuses.find((s) => s.month === month)
   if (!status) return 'empty'
   return status.is_ordered ? 'ordered' : 'unordered'
@@ -32,7 +33,7 @@ const ContractCell = ({ status }: { status: CellStatus }) => {
           border: '2px solid',
           borderColor: 'grey.300',
           borderRadius: 0.5,
-          bgcolor: 'white',
+          bgcolor: 'transparent',
           height: 48,
         }}
       />
